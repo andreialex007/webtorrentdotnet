@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{278E2EAC-8377-4062-97B2-42AD85A51A91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.WebApp", "WebTorrent.MvcApp\WebTorrent.WebApp.csproj", "{A74A2DA8-87E2-491F-B442-A51D5C4D43EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.Domain", "WebTorrent.Domain\WebTorrent.Domain.csproj", "{DFA3C303-CFFB-4DD0-ACFB-293E43B717BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A74A2DA8-87E2-491F-B442-A51D5C4D43EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A74A2DA8-87E2-491F-B442-A51D5C4D43EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A74A2DA8-87E2-491F-B442-A51D5C4D43EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A74A2DA8-87E2-491F-B442-A51D5C4D43EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA3C303-CFFB-4DD0-ACFB-293E43B717BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA3C303-CFFB-4DD0-ACFB-293E43B717BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA3C303-CFFB-4DD0-ACFB-293E43B717BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA3C303-CFFB-4DD0-ACFB-293E43B717BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
