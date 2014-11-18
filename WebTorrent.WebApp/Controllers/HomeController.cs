@@ -1,14 +1,12 @@
 ﻿using System.Web.Mvc;
 
-namespace WebTorrent.MvcApp.Controllers
+namespace WebTorrent.WebApp.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
+            return File("/index.html", "text/html");
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 
-namespace WebTorrent.MvcApp.Controllers
+namespace WebTorrent.WebApp.Controllers
 {
     public class ValuesController : ApiController
     {
@@ -10,7 +10,7 @@ namespace WebTorrent.MvcApp.Controllers
         {
             return new[] {"value1", "value2"};
         }
-         
+
         // GET api/values/5
         public string Get(int id)
         {

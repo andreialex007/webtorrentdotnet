@@ -1,10 +1,11 @@
 ﻿using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
-using WebTorrent.MvcApp.App_Start;
+using WebTorrent.WebApp.App_Start;
 
-namespace WebTorrent.MvcApp
+namespace WebTorrent.WebApp
 {
     public class WebApiApplication : HttpApplication
     {
@@ -14,6 +15,7 @@ namespace WebTorrent.MvcApp
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }
