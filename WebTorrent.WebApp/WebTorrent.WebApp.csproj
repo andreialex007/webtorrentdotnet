@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MonoTorrent">
+      <HintPath>..\packages\MonoTorrent.0.9.0\lib\net20\MonoTorrent.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -113,7 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +133,15 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="Styles\Theme\animate.css" />
+    <Content Include="Styles\Theme\app.css" />
+    <Content Include="Styles\Theme\bootstrap.css" />
+    <Content Include="Styles\Theme\font-awesome.min.css" />
+    <Content Include="Styles\Theme\font.css" />
+    <Content Include="Styles\Theme\less\less.php" />
+    <Content Include="Styles\Theme\less\lessc.inc.php" />
+    <Content Include="Styles\Theme\less\readme.txt" />
+    <Content Include="Styles\Theme\simple-line-icons.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -143,7 +154,25 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Styles\Theme\less\app.arrow.less" />
+    <Content Include="Styles\Theme\less\app.butterbar.less" />
+    <Content Include="Styles\Theme\less\app.buttons.less" />
+    <Content Include="Styles\Theme\less\app.colors.less" />
+    <Content Include="Styles\Theme\less\app.components.less" />
+    <Content Include="Styles\Theme\less\app.item.less" />
+    <Content Include="Styles\Theme\less\app.layout.less" />
+    <Content Include="Styles\Theme\less\app.less" />
+    <Content Include="Styles\Theme\less\app.mixins.less" />
+    <Content Include="Styles\Theme\less\app.nav.less" />
+    <Content Include="Styles\Theme\less\app.nav.offscreen.less" />
+    <Content Include="Styles\Theme\less\app.ng.less" />
+    <Content Include="Styles\Theme\less\app.plugin.less" />
+    <Content Include="Styles\Theme\less\app.reset.less" />
+    <Content Include="Styles\Theme\less\app.utilities.less" />
+    <Content Include="Styles\Theme\less\app.variables.less" />
+    <Content Include="Styles\Theme\less\app.widgets.less" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
