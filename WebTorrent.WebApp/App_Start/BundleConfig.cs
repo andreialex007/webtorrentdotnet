@@ -18,15 +18,15 @@ namespace WebTorrent.WebApp.App_Start
 
             var globalMandatoryStyles = new[]
                           {
-                              "~/Styles/Metronic/global/plugins/font-awesome/css/font-awesome.min.css",
-                              "~/Styles/Metronic/global/plugins/simple-line-icons/simple-line-icons.min.css",
-                              "~/Styles/Metronic/global/plugins/bootstrap/css/bootstrap.min.css",
-                              "~/Styles/Metronic/global/plugins/uniform/css/uniform.default.css",
-                              "~/Styles/Metronic/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css",
-                              "~/Styles/Metronic/global/css/components.css",
-                              "~/Styles/Metronic/admin/layout/css/layout.css",
-                              "~/Styles/Metronic/admin/layout/css/themes/default.css",
-                              "~/Styles/Metronic/admin/layout/css/custom.css",
+                              "~/Metronic/global/plugins/font-awesome/css/font-awesome.min.css",
+                              "~/Metronic/global/plugins/simple-line-icons/simple-line-icons.min.css",
+                              "~/Metronic/global/plugins/bootstrap/css/bootstrap.min.css",
+                              "~/Metronic/global/plugins/uniform/css/uniform.default.css",
+                              "~/Metronic/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css",
+                              "~/Metronic/global/css/components.css",
+                              "~/Metronic/admin/layout/css/layout.css",
+                              "~/Metronic/admin/layout/css/themes/default.css",
+                              "~/Metronic/admin/layout/css/custom.css",
 
                              
                           };

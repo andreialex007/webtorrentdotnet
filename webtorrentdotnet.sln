@@ -9,6 +9,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.Domain", "WebTor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.WebApp", "WebTorrent.WebApp\WebTorrent.WebApp.csproj", "{43C0DC96-E257-44F5-B95C-35DC75C0DFD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.TorrentLib", "WebTorrent.TorrentLib\WebTorrent.TorrentLib.csproj", "{5C2842E0-06A0-4331-8629-F5146100F319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.TorrentLib.Tests", "WebTorrent.TorrentLib.Tests\WebTorrent.TorrentLib.Tests.csproj", "{CB04306F-9141-488C-99B3-3A8F238CE915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Utils", "Common.Utils\Common.Utils.csproj", "{5A5A498E-ED1B-47BA-B1DA-8A1466F823D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{513C207E-A393-4E3C-87F4-7B2552CF793C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\Files\interface-prototype.jpg = ..\..\..\..\Desktop\Files\interface-prototype.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,8 +34,23 @@ Global
 		{43C0DC96-E257-44F5-B95C-35DC75C0DFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43C0DC96-E257-44F5-B95C-35DC75C0DFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43C0DC96-E257-44F5-B95C-35DC75C0DFD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C2842E0-06A0-4331-8629-F5146100F319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C2842E0-06A0-4331-8629-F5146100F319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C2842E0-06A0-4331-8629-F5146100F319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C2842E0-06A0-4331-8629-F5146100F319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB04306F-9141-488C-99B3-3A8F238CE915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB04306F-9141-488C-99B3-3A8F238CE915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB04306F-9141-488C-99B3-3A8F238CE915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB04306F-9141-488C-99B3-3A8F238CE915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A5A498E-ED1B-47BA-B1DA-8A1466F823D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A5A498E-ED1B-47BA-B1DA-8A1466F823D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A5A498E-ED1B-47BA-B1DA-8A1466F823D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A5A498E-ED1B-47BA-B1DA-8A1466F823D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CB04306F-9141-488C-99B3-3A8F238CE915} = {278E2EAC-8377-4062-97B2-42AD85A51A91}
 	EndGlobalSection
 EndGlobal
