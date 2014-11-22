@@ -77,11 +77,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientEngine\ClientEngineWrapper.cs" />
-    <Compile Include="ClientEngine\IClientEngine.cs" />
-    <Compile Include="TorrentManager\ITorrentManager.cs" />
+    <Compile Include="ClientEngineWrapper.cs" />
+    <Compile Include="IClientEngine.cs" />
+    <Compile Include="ITorrentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TorrentManager\TorrentManagerWrapper.cs" />
+    <Compile Include="TorrentManagerWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

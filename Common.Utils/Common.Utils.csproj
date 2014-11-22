@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="TypeUtils.cs" />
-    <Compile Include="DbContextExtensions.cs" />
     <Compile Include="DisplayNameExtended.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="IO\FileUtils.cs" />

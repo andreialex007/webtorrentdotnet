@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en" ng-app="torrentApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -2050,6 +2050,14 @@
         });
     </script>
     <!-- END JAVASCRIPTS -->
+    @if (Html.IsDebug())
+    {
+        <script data-main="/Scripts/app.config.js" src="/Scripts/libs/require.js"></script>
+    }
+    else
+    {
+        @Html.IncludeVersionedJs("/_build/build.js")
+    }
 </body>
 
 </html>
