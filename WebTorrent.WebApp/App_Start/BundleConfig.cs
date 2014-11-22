@@ -27,8 +27,7 @@ namespace WebTorrent.WebApp.App_Start
                               "~/Metronic/admin/layout/css/layout.css",
                               "~/Metronic/admin/layout/css/themes/default.css",
                               "~/Metronic/admin/layout/css/custom.css",
-
-                             
+                              "~/Styles/common/common.css",
                           };
 
             bundles.Add(new StyleBundle("~/css") { Orderer = new AsIsBundleOrderer() }

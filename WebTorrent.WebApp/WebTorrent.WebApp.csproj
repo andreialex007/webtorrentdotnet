@@ -156,7 +156,7 @@
     <Folder Include="Scripts\libs\angular-1.3.3\i18n\ngLocale\" />
     <Folder Include="Scripts\models\" />
     <Folder Include="Scripts\services\" />
-    <Folder Include="Styles\" />
+    <Folder Include="Styles\controls\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -5019,6 +5019,9 @@
     <Content Include="Scripts\libs\r.js" />
     <Content Include="Scripts\libs\require.js" />
     <Content Include="Scripts\ng.js" />
+    <Content Include="Styles\common\common.css">
+      <DependentUpon>common.less</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -5464,6 +5467,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="_build\build.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\common\common.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\common\common.css.map">
+      <DependentUpon>common.css</DependentUpon>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
