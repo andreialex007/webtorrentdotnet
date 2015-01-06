@@ -8,7 +8,7 @@ namespace WebTorrent.TorrentLib
 {
     public class ClientEngineWrapper : IClientEngine
     {
-        private readonly MonoTorrent.Client.ClientEngine _clientEngine;
+        private readonly ClientEngine _clientEngine;
 
         public void ChangeListenEndpoint(IPEndPoint endpoint)
         {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{278E2EAC-8377-4062-97B2-42AD85A51A91}"
 EndProject
@@ -17,10 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Utils", "Common.Util
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{513C207E-A393-4E3C-87F4-7B2552CF793C}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Desktop\Files\interface-prototype.jpg = ..\..\..\..\Desktop\Files\interface-prototype.jpg
+		interface-prototype.jpg = interface-prototype.jpg
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildGenerator", "BuildGenerator\BuildGenerator.csproj", "{B03959DC-BB82-4FA6-809A-8DFE8957CF3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.Data", "WebTorrent.Data\WebTorrent.Data.csproj", "{7EC68EAB-D175-4414-A064-95BAABFA2918}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{B03959DC-BB82-4FA6-809A-8DFE8957CF3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B03959DC-BB82-4FA6-809A-8DFE8957CF3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B03959DC-BB82-4FA6-809A-8DFE8957CF3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EC68EAB-D175-4414-A064-95BAABFA2918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EC68EAB-D175-4414-A064-95BAABFA2918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EC68EAB-D175-4414-A064-95BAABFA2918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EC68EAB-D175-4414-A064-95BAABFA2918}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

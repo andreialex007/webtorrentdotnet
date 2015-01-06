@@ -11,7 +11,7 @@ namespace WebTorrent.TorrentLib
     {
         void ChangePicker(PiecePicker picker);
         void Dispose();
-        bool Equals(MonoTorrent.Client.TorrentManager other);
+        bool Equals(TorrentManager other);
         List<Piece> GetActiveRequests();
         List<PeerId> GetPeers();
         void HashCheck(bool autoStart);
