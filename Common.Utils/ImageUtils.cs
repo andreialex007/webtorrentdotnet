@@ -34,7 +34,7 @@ namespace Common.Utils
             return bitmap;
         }
 
-        private static Image cropImage(Image img, Rectangle cropArea)
+        private static Image CropImage(Image img, Rectangle cropArea)
         {
             var bmpImage = new Bitmap(img);
             var bmpCrop = bmpImage.Clone(cropArea,
