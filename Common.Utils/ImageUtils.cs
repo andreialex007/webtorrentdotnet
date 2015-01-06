@@ -25,11 +25,11 @@ namespace Common.Utils
             var destHeight = (int)(sourceHeight * nPercent);
 
             var bitmap = new Bitmap(destWidth, destHeight);
-            var g = Graphics.FromImage(bitmap);
-            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            var graphics = Graphics.FromImage(bitmap);
+            graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-            g.DrawImage(imgToResize, 0, 0, destWidth, destHeight);
-            g.Dispose();
+            graphics.DrawImage(imgToResize, 0, 0, destWidth, destHeight);
+            graphics.Dispose();
 
             return bitmap;
         }
