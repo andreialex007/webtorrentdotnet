@@ -15,4 +15,44 @@
 .uppercase {
   text-transform: uppercase !important;
 }
+.page-content {
+  position: relative !important;
+}
+.items-table-container {
+  position: absolute;
+  top: 0px;
+  right: 19px;
+  left: 25px;
+  bottom: 21px;
+}
+.items-table-container .items-table-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.items-table-container .items-table-wrapper .inner-row {
+  display: table-row;
+}
+.items-table-container .items-table-wrapper .inner-row .inner-cell {
+  display: table-cell;
+}
+.items-table-container .items-table-wrapper .properties-row {
+  background-color: ActiveBorder;
+}
+.items-table-container .items-table-wrapper .list-row {
+  height: 100%;
+}
+.items-table-container .torrent-info-portlet {
+  margin-bottom: 0px;
+}
+.progress {
+  background-color: gainsboro;
+}
+.torrent-name h4 {
+  margin: 0px;
+}
+.torrent-progress {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 /*# sourceMappingURL=common.css.map */

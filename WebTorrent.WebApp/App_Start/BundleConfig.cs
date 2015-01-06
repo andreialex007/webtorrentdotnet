@@ -25,7 +25,7 @@ namespace WebTorrent.WebApp.App_Start
                               "~/Metronic/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css",
                               "~/Metronic/global/css/components.css",
                               "~/Metronic/admin/layout/css/layout.css",
-                              "~/Metronic/admin/layout/css/themes/default.css",
+                              "~/Metronic/admin/layout/css/themes/light2.css",
                               "~/Metronic/admin/layout/css/custom.css",
                               "~/Styles/common/common.css",
                           };
