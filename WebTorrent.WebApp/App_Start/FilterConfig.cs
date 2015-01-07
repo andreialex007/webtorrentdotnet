@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace WebTorrent.WebApp.App_Start
+namespace WebTorrent.WebApp
 {
     public class FilterConfig
     {

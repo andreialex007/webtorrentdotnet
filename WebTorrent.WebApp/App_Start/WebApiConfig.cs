@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
 
-namespace WebTorrent.WebApp.App_Start
+namespace WebTorrent.WebApp
 {
     public static class WebApiConfig
     {

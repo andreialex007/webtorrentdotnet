@@ -3,6 +3,7 @@ using NUnit.Framework;
 using StructureMap;
 using StructureMap.Graph;
 using StructureMap.Pipeline;
+using WebTorrent.Domain.Wrappers;
 
 namespace WebTorrent.TorrentLib.Tests.Common
 {

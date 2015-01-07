@@ -4,7 +4,7 @@ using MonoTorrent;
 using MonoTorrent.Client;
 using MonoTorrent.Common;
 
-namespace WebTorrent.TorrentLib
+namespace WebTorrent.Domain.Wrappers
 {
     public interface IClientEngine
     {

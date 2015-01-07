@@ -178,12 +178,15 @@
     <Folder Include="Styles\controls\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AsIsBundleOrderer.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundlesExtensions.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Common\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\TorrentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -5474,6 +5477,10 @@
     <ProjectReference Include="..\Common.Utils\Common.Utils.csproj">
       <Project>{5a5a498e-ed1b-47ba-b1da-8a1466f823d5}</Project>
       <Name>Common.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebTorrent.Data\WebTorrent.Data.csproj">
+      <Project>{7ec68eab-d175-4414-a064-95baabfa2918}</Project>
+      <Name>WebTorrent.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebTorrent.Domain\WebTorrent.Domain.csproj">
       <Project>{dfa3c303-cffb-4dd0-acfb-293e43b717bb}</Project>

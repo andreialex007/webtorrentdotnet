@@ -5,7 +5,7 @@ using MonoTorrent.Client;
 using MonoTorrent.Client.Tracker;
 using MonoTorrent.Common;
 
-namespace WebTorrent.TorrentLib
+namespace WebTorrent.Domain.Wrappers
 {
     public interface ITorrentManager
     {

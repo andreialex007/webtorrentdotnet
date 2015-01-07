@@ -3,6 +3,7 @@ using System.Net;
 using MonoTorrent;
 using MonoTorrent.Client;
 using MonoTorrent.Common;
+using WebTorrent.Domain.Wrappers;
 
 namespace WebTorrent.TorrentLib
 {
@@ -27,7 +28,7 @@ namespace WebTorrent.TorrentLib
 
         public bool Contains(ITorrentManager manager)
         {
-            return _clientEngine.Contains(((TorrentManagerWrapper)manager)._torrentManager);
+            return _clientEngine.Contains(((TorrentManagerWrapper)manager).TorrentManager);
         }
 
         public void Dispose()
@@ -42,7 +43,7 @@ namespace WebTorrent.TorrentLib
 
         public void Register(ITorrentManager manager)
         {
-            _clientEngine.Register(((TorrentManagerWrapper)manager)._torrentManager);
+            _clientEngine.Register(((TorrentManagerWrapper)manager).TorrentManager);
         }
 
         public void RegisterDht(IDhtEngine engine)
@@ -62,7 +63,7 @@ namespace WebTorrent.TorrentLib
 
         public void Unregister(ITorrentManager manager)
         {
-            _clientEngine.Unregister(((TorrentManagerWrapper)manager)._torrentManager);
+            _clientEngine.Unregister(((TorrentManagerWrapper)manager).TorrentManager);
         }
 
         public ConnectionManager ConnectionManager

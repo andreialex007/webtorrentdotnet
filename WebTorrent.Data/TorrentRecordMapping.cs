@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentNHibernate.Mapping;
 using WebTorrent.Domain;
-using WebTorrent.Domain.Entities;
+using WebTorrent.Domain.Services.Torrent;
 
 namespace WebTorrent.Data
 {
@@ -18,7 +18,7 @@ namespace WebTorrent.Data
             Id(x => x.Id).Column("Id");
             Map(x => x.Name).Column("Name");
             Map(x => x.Data).Column("Data");
-            Map(x => x.State).Column("State");
+            Map(x => x.State).Column("State").CustomType<TorrentState>();
         }
     }
 }

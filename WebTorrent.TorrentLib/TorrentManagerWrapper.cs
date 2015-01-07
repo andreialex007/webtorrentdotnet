@@ -4,251 +4,252 @@ using MonoTorrent;
 using MonoTorrent.Client;
 using MonoTorrent.Client.Tracker;
 using MonoTorrent.Common;
+using WebTorrent.Domain.Wrappers;
 
 namespace WebTorrent.TorrentLib
 {
     public class TorrentManagerWrapper : ITorrentManager
     {
-        public readonly MonoTorrent.Client.TorrentManager _torrentManager;
+        public readonly TorrentManager TorrentManager;
 
-        public TorrentManagerWrapper(MonoTorrent.Client.TorrentManager torrentManager)
+        public TorrentManagerWrapper(TorrentManager torrentManager)
         {
-            _torrentManager = torrentManager;
+            TorrentManager = torrentManager;
         }
 
         public void ChangePicker(PiecePicker picker)
         {
-            _torrentManager.ChangePicker(picker);
+            TorrentManager.ChangePicker(picker);
         }
 
         public void Dispose()
         {
-            _torrentManager.Dispose();
+            TorrentManager.Dispose();
         }
 
-        public bool Equals(MonoTorrent.Client.TorrentManager other)
+        public bool Equals(TorrentManager other)
         {
-            return _torrentManager.Equals(other);
+            return TorrentManager.Equals(other);
         }
 
         public List<Piece> GetActiveRequests()
         {
-            return _torrentManager.GetActiveRequests();
+            return TorrentManager.GetActiveRequests();
         }
 
         public List<PeerId> GetPeers()
         {
-            return _torrentManager.GetPeers();
+            return TorrentManager.GetPeers();
         }
 
         public void HashCheck(bool autoStart)
         {
-            _torrentManager.HashCheck(autoStart);
+            TorrentManager.HashCheck(autoStart);
         }
 
         public void MoveFile(TorrentFile file, string path)
         {
-            _torrentManager.MoveFile(file, path);
+            TorrentManager.MoveFile(file, path);
         }
 
         public void MoveFiles(string newRoot, bool overWriteExisting)
         {
-            _torrentManager.MoveFiles(newRoot, overWriteExisting);
+            TorrentManager.MoveFiles(newRoot, overWriteExisting);
         }
 
         public void Pause()
         {
-            _torrentManager.Pause();
+            TorrentManager.Pause();
         }
 
         public void Start()
         {
-            _torrentManager.Start();
+            TorrentManager.Start();
         }
 
         public void Stop()
         {
-            _torrentManager.Stop();
+            TorrentManager.Stop();
         }
 
         public void AddPeers(Peer peer)
         {
-            _torrentManager.AddPeers(peer);
+            TorrentManager.AddPeers(peer);
         }
 
         public void AddPeers(IEnumerable<Peer> peers)
         {
-            _torrentManager.AddPeers(peers);
+            TorrentManager.AddPeers(peers);
         }
 
         public void LoadFastResume(FastResume data)
         {
-            _torrentManager.LoadFastResume(data);
+            TorrentManager.LoadFastResume(data);
         }
 
         public FastResume SaveFastResume()
         {
-            return _torrentManager.SaveFastResume();
+            return TorrentManager.SaveFastResume();
         }
 
         public BitField Bitfield
         {
-            get { return _torrentManager.Bitfield; }
+            get { return TorrentManager.Bitfield; }
         }
 
         public bool CanUseDht
         {
-            get { return _torrentManager.CanUseDht; }
+            get { return TorrentManager.CanUseDht; }
         }
 
         public bool Complete
         {
-            get { return _torrentManager.Complete; }
+            get { return TorrentManager.Complete; }
         }
 
-        public MonoTorrent.Client.ClientEngine Engine
+        public ClientEngine Engine
         {
-            get { return _torrentManager.Engine; }
+            get { return TorrentManager.Engine; }
         }
 
         public Error Error
         {
-            get { return _torrentManager.Error; }
+            get { return TorrentManager.Error; }
         }
 
         public int PeerReviewRoundsComplete
         {
-            get { return _torrentManager.PeerReviewRoundsComplete; }
+            get { return TorrentManager.PeerReviewRoundsComplete; }
         }
 
         public bool HashChecked
         {
-            get { return _torrentManager.HashChecked; }
+            get { return TorrentManager.HashChecked; }
         }
 
         public int HashFails
         {
-            get { return _torrentManager.HashFails; }
+            get { return TorrentManager.HashFails; }
         }
 
         public bool HasMetadata
         {
-            get { return _torrentManager.HasMetadata; }
+            get { return TorrentManager.HasMetadata; }
         }
 
         public bool IsInEndGame
         {
-            get { return _torrentManager.IsInEndGame; }
+            get { return TorrentManager.IsInEndGame; }
         }
 
         public ConnectionMonitor Monitor
         {
-            get { return _torrentManager.Monitor; }
+            get { return TorrentManager.Monitor; }
         }
 
         public int OpenConnections
         {
-            get { return _torrentManager.OpenConnections; }
+            get { return TorrentManager.OpenConnections; }
         }
 
         public PeerManager Peers
         {
-            get { return _torrentManager.Peers; }
+            get { return TorrentManager.Peers; }
         }
 
         public PieceManager PieceManager
         {
-            get { return _torrentManager.PieceManager; }
+            get { return TorrentManager.PieceManager; }
         }
 
         public double Progress
         {
-            get { return _torrentManager.Progress; }
+            get { return TorrentManager.Progress; }
         }
 
         public string SavePath
         {
-            get { return _torrentManager.SavePath; }
+            get { return TorrentManager.SavePath; }
         }
 
         public TorrentSettings Settings
         {
-            get { return _torrentManager.Settings; }
+            get { return TorrentManager.Settings; }
         }
 
         public TorrentState State
         {
-            get { return _torrentManager.State; }
+            get { return TorrentManager.State; }
         }
 
         public DateTime StartTime
         {
-            get { return _torrentManager.StartTime; }
+            get { return TorrentManager.StartTime; }
         }
 
         public TrackerManager TrackerManager
         {
-            get { return _torrentManager.TrackerManager; }
+            get { return TorrentManager.TrackerManager; }
         }
 
         public Torrent Torrent
         {
-            get { return _torrentManager.Torrent; }
+            get { return TorrentManager.Torrent; }
         }
 
         public int UploadingTo
         {
-            get { return _torrentManager.UploadingTo; }
+            get { return TorrentManager.UploadingTo; }
         }
 
         public bool IsInitialSeeding
         {
-            get { return _torrentManager.IsInitialSeeding; }
+            get { return TorrentManager.IsInitialSeeding; }
         }
 
         public int InactivePeers
         {
-            get { return _torrentManager.InactivePeers; }
+            get { return TorrentManager.InactivePeers; }
         }
 
         public InfoHash InfoHash
         {
-            get { return _torrentManager.InfoHash; }
+            get { return TorrentManager.InfoHash; }
         }
 
         public List<Uri> InactivePeerList
         {
-            get { return _torrentManager.InactivePeerList; }
+            get { return TorrentManager.InactivePeerList; }
         }
 
         public event EventHandler<PeerConnectionEventArgs> PeerConnected
         {
-            add { _torrentManager.PeerConnected += value; }
-            remove { _torrentManager.PeerConnected -= value; }
+            add { TorrentManager.PeerConnected += value; }
+            remove { TorrentManager.PeerConnected -= value; }
         }
 
         public event EventHandler<PeerConnectionEventArgs> PeerDisconnected
         {
-            add { _torrentManager.PeerDisconnected += value; }
-            remove { _torrentManager.PeerDisconnected -= value; }
+            add { TorrentManager.PeerDisconnected += value; }
+            remove { TorrentManager.PeerDisconnected -= value; }
         }
 
         public event EventHandler<PeersAddedEventArgs> PeersFound
         {
-            add { _torrentManager.PeersFound += value; }
-            remove { _torrentManager.PeersFound -= value; }
+            add { TorrentManager.PeersFound += value; }
+            remove { TorrentManager.PeersFound -= value; }
         }
 
         public event EventHandler<PieceHashedEventArgs> PieceHashed
         {
-            add { _torrentManager.PieceHashed += value; }
-            remove { _torrentManager.PieceHashed -= value; }
+            add { TorrentManager.PieceHashed += value; }
+            remove { TorrentManager.PieceHashed -= value; }
         }
 
         public event EventHandler<TorrentStateChangedEventArgs> TorrentStateChanged
         {
-            add { _torrentManager.TorrentStateChanged += value; }
-            remove { _torrentManager.TorrentStateChanged -= value; }
+            add { TorrentManager.TorrentStateChanged += value; }
+            remove { TorrentManager.TorrentStateChanged -= value; }
         }
     }
 }

@@ -2,24 +2,19 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace WebTorrent.WebApp.App_Start
+namespace WebTorrent.WebApp
 {
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.RouteExistingFiles = true;
 
-            routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-           );
+            routes.MapHttpRoute("Default Api", "api/{controller}/{id}");
 
-            //            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            //            routes.RouteExistingFiles = true;
-            //
-            //            routes.MapHttpRoute("Default Api", "api/{controller}/{id}");
-            //
-            //            routes.MapRoute("all", "{*all}", new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            //            );
+            routes.MapRoute("all", "{*all}", new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

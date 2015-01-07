@@ -1,33 +1,36 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
+using WebTorrent.Domain.Services.Torrent;
 
 namespace WebTorrent.WebApp.Controllers
 {
-    public class ValuesController : ApiController
+    public class TorrentsController : ApiController
     {
-        // GET api/values
+        // GET api/torrents
         public IEnumerable<string> Get()
         {
-            return new[] {"value1", "value2"};
+            var torrentsList = TorrentEngine.Current.AllTorrents().Select(x => x.Name).ToList();
+            return torrentsList;
         }
 
-        // GET api/values/5
+        // GET api/torrents/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/values
+        // POST api/torrents
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/values/5
+        // PUT api/torrents/5
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/values/5
+        // DELETE api/torrents/5
         public void Delete(int id)
         {
         }

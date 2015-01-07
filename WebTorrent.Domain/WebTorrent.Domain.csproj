@@ -97,13 +97,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\TorrentRecord.cs" />
-    <Compile Include="Entities\TorrentRecordState.cs" />
+    <Compile Include="Services\Role\Role.cs" />
+    <Compile Include="Services\Torrent\ITorrentEngine.cs" />
+    <Compile Include="Services\Torrent\TorrentDto.cs" />
+    <Compile Include="Services\Torrent\TorrentRecord.cs" />
+    <Compile Include="Services\Torrent\TorrentState.cs" />
+    <Compile Include="Services\Torrent\TorrentEngine.cs" />
+    <Compile Include="Services\User\User.cs" />
+    <Compile Include="Services\_Common\Entities\EntityBase.cs" />
+    <Compile Include="Services\_Common\Entities\IIdEntity.cs" />
+    <Compile Include="Services\_Common\Entities\INamedEntity.cs" />
+    <Compile Include="Services\_Common\Entities\NameValue.cs" />
+    <Compile Include="Services\_Common\NHibertnateSession.cs" />
+    <Compile Include="Services\_Common\ServiceBase.cs" />
+    <Compile Include="Wrappers\IClientEngine.cs" />
+    <Compile Include="Wrappers\ITorrentManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.94.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.94.0\build\net45\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

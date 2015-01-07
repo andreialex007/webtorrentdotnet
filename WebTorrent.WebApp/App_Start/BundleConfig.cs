@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace WebTorrent.WebApp.App_Start
+namespace WebTorrent.WebApp
 {
     public class BundleConfig
     {
@@ -34,36 +32,6 @@ namespace WebTorrent.WebApp.App_Start
                .IncludeRewriteCssStyles(globalMandatoryStyles)
                );
 
-        }
-    }
-
-
-    public class AsIsBundleOrderer : IBundleOrderer
-    {
-        public IEnumerable<BundleFile> OrderFiles(BundleContext context, IEnumerable<BundleFile> files)
-        {
-            return files;
-        }
-    }
-
-    public static class BundlesExtensions
-    {
-        public static Bundle IncludeRewriteCss(this Bundle bundle, string path)
-        {
-            return bundle.Include(path, new CssRewriteUrlTransform());
-        }
-
-        public static Bundle IncludeRewriteCssStyles(this Bundle bundle, params string[] paths)
-        {
-            foreach (var path in paths)
-                bundle.Include(path, new CssRewriteUrlTransform());
-
-            return bundle;
-        }
-
-        public static Bundle IncludeAction(this Bundle bundle, Func<Bundle, Bundle> func, params IItemTransform[] transforms)
-        {
-            return func(bundle);
         }
     }
 }

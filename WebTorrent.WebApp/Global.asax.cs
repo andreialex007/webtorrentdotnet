@@ -1,9 +1,10 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using WebTorrent.WebApp.App_Start;
+using System.Web.SessionState;
 
 namespace WebTorrent.WebApp
 {
@@ -16,6 +17,18 @@ namespace WebTorrent.WebApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            IocConfig.Bootstrap();
+        }
+
+        public override void Init()
+        {
+            this.PostAuthenticateRequest += MvcApplicationPostAuthenticateRequest;
+            base.Init();
+        }
+
+        private static void MvcApplicationPostAuthenticateRequest(object sender, EventArgs e)
+        {
+            HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
         }
     }
 }
