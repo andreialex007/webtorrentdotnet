@@ -1,13 +1,14 @@
 ﻿require([
         'Metronic/init',
-        "Scripts/ng.config"
-], function () {
+        'Scripts/libs/angular-1.3.3/angular-modules',
+        'Scripts/controllers/mainCtrl'
+], function (init, modules, mainCtrl) {
 
-    function app() {
-        var self = {};
-        return self;
-    }
-
-    app();
+    window.app = angular.module('app', [
+            // 'ngRoute', 'ngResource', 'ngGrid'
+        ]
+    );
+    app.controller('mainCtrl', mainCtrl);
+    angular.bootstrap(document, ['app']);
 
 });

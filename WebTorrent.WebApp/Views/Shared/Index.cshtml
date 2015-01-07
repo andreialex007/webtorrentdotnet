@@ -1,7 +1,7 @@
 ﻿@using Common.Utils
 
 <!DOCTYPE html>
-<html lang="en" ng-app="torrentApp" >
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -10,7 +10,8 @@
     @Styles.Render("~/css")
 </head>
 
-<body ng-controller="AppCtrl" class="page-header-fixed page-quick-sidebar-over-content">
+<body ng-controller="mainCtrl" class="page-header-fixed page-quick-sidebar-over-content">
+
     <div class="page-header navbar navbar-fixed-top">
         <div class="page-header-inner">
             <div class="page-logo">
@@ -62,6 +63,7 @@
     <!-- END HEADER -->
     <div class="clearfix">
     </div>
+
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
         <!-- BEGIN SIDEBAR -->
@@ -120,13 +122,14 @@
         <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
             <div class="page-content">
+                
                 <div class="items-table-container">
                     <div class="items-table-wrapper" style="">
                         <div class="inner-row list-row">
 
                             <div class="inner-cell">
                                 <div>
-                                    <h3>Torrents list</h3>
+                                    <h3>Torrents list <small>{{TestVar}}</small></h3>
                                 </div>
                                 <div>
                                     <table class="table table-striped table-bordered table-hover dataTable no-footer">
@@ -405,5 +408,7 @@
         @Html.IncludeVersionedJs("/_build/build.js")
     }
 </body>
+
+
 
 </html>

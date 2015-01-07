@@ -1,4 +1,4 @@
-﻿require([
+﻿define([
         'Metronic/core',
         'Metronic/global/scripts/metronic',
         'Metronic/admin/layout/scripts/layout',

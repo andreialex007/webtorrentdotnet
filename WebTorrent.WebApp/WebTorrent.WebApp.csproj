@@ -171,6 +171,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="Metronic\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="Scripts\directives\" />
+    <Folder Include="Scripts\filters\" />
     <Folder Include="Scripts\libs\angular-1.3.3\i18n\ngLocale\" />
     <Folder Include="Scripts\models\" />
     <Folder Include="Scripts\services\" />
@@ -2838,10 +2840,10 @@
     <Content Include="Metronic\global\scripts\datatable.js" />
     <Content Include="Metronic\global\scripts\metronic.js" />
     <Content Include="Metronic\init.js" />
+    <Content Include="Scripts\controllers\mainCtrl.js" />
+    <Content Include="Scripts\libs\angular-1.3.3\angular-modules.js" />
     <Content Include="Scripts\app.config.js" />
     <Content Include="Scripts\app.js" />
-    <Content Include="Scripts\filters.js" />
-    <Content Include="Scripts\directives.js" />
     <Content Include="Scripts\libs\angular-1.3.3\angular-animate.js" />
     <Content Include="Scripts\libs\angular-1.3.3\angular-animate.min.js" />
     <Content Include="Scripts\libs\angular-1.3.3\angular-aria.js" />
@@ -5039,7 +5041,6 @@
     <Content Include="Scripts\libs\jquery.ui.widget.js" />
     <Content Include="Scripts\libs\r.js" />
     <Content Include="Scripts\libs\require.js" />
-    <Content Include="Scripts\ng.config.js" />
     <Content Include="Styles\common\common.css">
       <DependentUpon>common.less</DependentUpon>
     </Content>
