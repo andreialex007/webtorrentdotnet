@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityBaseMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TorrentRecordMapping.cs" />
   </ItemGroup>

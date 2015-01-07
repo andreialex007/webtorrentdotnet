@@ -1,4 +1,5 @@
-﻿using WebTorrent.Domain.Services._Common.Entities;
+﻿using System;
+using WebTorrent.Domain.Services._Common.Entities;
 
 namespace WebTorrent.Domain.Services.Torrent
 {
@@ -8,5 +9,6 @@ namespace WebTorrent.Domain.Services.Torrent
         public virtual string Name { get; set; }
         public virtual byte[] Data { get; set; }
         public virtual TorrentState State { get; set; }
+        public virtual DateTime? Completed { get; set; }
     }
 }

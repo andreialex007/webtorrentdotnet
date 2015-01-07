@@ -8,16 +8,17 @@ namespace WebTorrent.WebApp.Controllers
     public class TorrentsController : ApiController
     {
         // GET api/torrents
-        public IEnumerable<string> Get()
+        public IEnumerable<TorrentDto> Get()
         {
-            var torrentsList = TorrentEngine.Current.AllTorrents().Select(x => x.Name).ToList();
+            var torrentsList = TorrentEngine.Current.AllTorrents().ToList();
             return torrentsList;
         }
 
         // GET api/torrents/5
-        public string Get(int id)
+        public TorrentDto Get(int id)
         {
-            return "value";
+            var torrent = TorrentEngine.Current.GetTorrentById(id);
+            return torrent;
         }
 
         // POST api/torrents

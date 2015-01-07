@@ -10,14 +10,14 @@ namespace WebTorrent.Domain.Services._Common.Entities
         /// </summary>
         public abstract int Id { get; set; }
 
-//        /// <summary>
-//        /// Дата создания
-//        /// </summary>
-//        public DateTime Created { get; set; }
-//
-//        /// <summary>
-//        /// Дата изменения
-//        /// </summary>
-//        public DateTime Modified { get; set; }
+        /// <summary>
+        /// Дата создания
+        /// </summary>
+        public virtual DateTime? Created { get; set; }
+
+        /// <summary>
+        /// Дата изменения
+        /// </summary>
+        public virtual DateTime? Modified { get; set; }
     }
 }

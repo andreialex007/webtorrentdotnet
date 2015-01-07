@@ -1,5 +1,6 @@
 ﻿require([
-        'Metronic/init'
+        'Metronic/init',
+        "Scripts/ng.config"
 ], function () {
 
     function app() {

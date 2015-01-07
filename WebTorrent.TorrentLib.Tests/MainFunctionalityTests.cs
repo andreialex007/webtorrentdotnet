@@ -1,8 +1,10 @@
 ﻿using System.IO;
+using System.Linq;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using MonoTorrent.Client;
 using MonoTorrent.Common;
+using NHibernate.Linq;
 using NUnit.Framework;
 using WebTorrent.Data;
 using WebTorrent.Domain.Services.Torrent;
@@ -29,8 +31,8 @@ namespace WebTorrent.TorrentLib.Tests
             _clientEngine = new ClientEngine(settings);
 
 
-//            var torrent = Torrent.Load(null);
-//            new Torrent();
+            //            var torrent = Torrent.Load(null);
+            //            new Torrent();
         }
 
         [TearDown]
@@ -50,10 +52,15 @@ namespace WebTorrent.TorrentLib.Tests
         {
             NHibertnateSession.FactoryCreator = () =>
                                                 {
-                                                    var dbConfig = SQLiteConfiguration
-                                                        .Standard
-                                                        .UsingFile("C:\\nhibernate.db")
+
+                                                    var dbConfig = MsSqlConfiguration.MsSql2012
+                                                        .ConnectionString(@"Data Source=ANDREI-PC\MSSQLSERVER2012;Initial Catalog=TorrentDb;Integrated Security=True")
                                                         .ShowSql();
+
+                                                    //                                                    var dbConfig = SQLiteConfiguration
+                                                    //                                                        .Standard
+                                                    //                                                        .UsingFile("C:\\nhibernate.db")
+                                                    //                                                        .ShowSql();
 
                                                     var sessionFactory = Fluently
                                                         .Configure()
@@ -69,11 +76,13 @@ namespace WebTorrent.TorrentLib.Tests
 
             using (var session = NHibertnateSession.OpenSession())
             {
-                var torrentsList = session.QueryOver<TorrentRecord>()
-                 .Select(x => x.Name)
-                 .OrderBy(x => x.Name)
-                 .Asc
-                 .List<string>();
+                var records = session.Query<TorrentRecord>().Select(x => new TorrentDto
+                                                                       {
+                                                                           Id = x.Id,
+                                                                           Name = x.Name,
+                                                                           Created = x.Created,
+                                                                           State = x.State
+                                                                       }).ToList();
             }
         }
     }

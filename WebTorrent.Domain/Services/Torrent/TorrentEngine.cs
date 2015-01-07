@@ -63,7 +63,7 @@ namespace WebTorrent.Domain.Services.Torrent
             }
         }
 
-        public TorrentDto Torrent(int id)
+        public TorrentDto GetTorrentById(int id)
         {
             using (var session = OpenSession())
             {

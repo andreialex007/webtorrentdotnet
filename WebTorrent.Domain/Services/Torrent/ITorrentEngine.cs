@@ -6,6 +6,6 @@ namespace WebTorrent.Domain.Services.Torrent
     {
         List<TorrentDto> AllTorrents();
         List<TorrentDto> TorrentsWithState(TorrentState torrentState);
-        TorrentDto Torrent(int id);
+        TorrentDto GetTorrentById(int id);
     }
 }
