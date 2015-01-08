@@ -1,0 +1,51 @@
+﻿<!--<div class="items-table-container">-->
+<!--    <div class="items-table-wrapper">-->
+<!--        <div style="background-color: bisque" class="inner-row list-row">-->
+<!--            <div class="inner-cell">-->
+<!--                $1$                <div ng-include src="'/Templates/torrentsList.html'"></div>#1#-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div style="background-color: coral" class=" properties-row">-->
+<!--            <div>-->
+<!--                properties-->
+<!--                $1$                <div ng-include src="'/Templates/torrentInfo.html'"></div>#1#-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="items-table-container">
+
+    <div style="position: relative; height: 100%;">
+        <div style="position: absolute;width: 100%;top:0px;bottom: 50%;padding-bottom: 7px;">
+            <div class="relative-wrapper">
+                <div style="position: absolute;
+top: 0px;
+height: 34px;
+right: 0px;
+left: 0px;">
+                    <h4>Torrents list</h4>
+                </div>
+                <div style="
+                                                                                                                                                                                                                                                                                                                               position: absolute;
+                                                                                                                                                                                                                                                                                                                               bottom: 0px;
+                                                                                                                                                                                                                                                                                                                               left: 0px;
+                                                                                                                                                                                                                                                                                                                               right: 0px;
+                                                                                                                                                                                                                                                                                                                               top: 34px;
+                                                                                                                                                                                                                                                                                                                               overflow-y: auto
+">
+                    <div ng-include src="'/Templates/torrentsList.html'"></div>
+                </div>
+            </div>
+        </div>
+        <div style="position: absolute;
+width: 100%;
+bottom: 0px;
+top: 50%;
+overflow-y: auto;
+overflow-x: hidden;">
+            <div ng-include src="'/Templates/torrentInfo.html'"></div>
+        </div>
+    </div>
+
+</div>

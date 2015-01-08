@@ -27,14 +27,14 @@
 .items-table-container {
     // background-color: burlywood;
     position: absolute;
-    top: 0px;
-    right: 19px;
-    left: 25px;
-    bottom: 21px;
+    top: 15px;
+    right: 16px;
+    left: 18px;
+    bottom: 14px;
 
     .items-table-wrapper {
         display: table;
-        // background-color: aqua;
+        //  background-color: aqua;
         width: 100%;
         height: 100%;
 
@@ -46,13 +46,18 @@
             }
         }
 
-
         .properties-row {
-            background-color: ActiveBorder;
+            // background-color: ActiveBorder;
         }
 
         .list-row {
-            height: 100%;
+            //height: 100%;
+        }
+
+        .checkbox-td {
+            width: 11px;
+            margin-top: 49px;
+            border-right: none;
         }
     }
 
@@ -76,6 +81,14 @@
 .torrent-progress {
     margin-top: 5px;
     margin-bottom: 5px;
+
+    .progress-striped {
+        margin-bottom: 0;
+        height: 10px;
+
+        .progress-bar {
+        }
+    }
 }
 
 .dropdown-user {
@@ -85,4 +98,11 @@
         padding-right: 10px !important;
         padding-left: 14px !important;
     }
+}
+
+
+.relative-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
 }

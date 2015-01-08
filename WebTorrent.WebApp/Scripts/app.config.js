@@ -2,7 +2,9 @@
     baseUrl: "/",
     paths: {
         'jquery': 'Metronic/global/plugins/jquery-1.11.0.min',
-        "jquery.ui.widget": "Scripts/libs/jquery.ui.widget"
+        "jquery.ui.widget": "Scripts/libs/jquery.ui.widget",
+        "angular": 'Scripts/libs/angular-1.3.3/angular',
+        "angular-route": 'Scripts/libs/angular-1.3.3/angular-route'
     },
     shim: {
         'jquery': {
@@ -71,7 +73,11 @@
         },
         'Scripts/libs/jquery.fileupload': {
             deps: ['Scripts/libs/jquery.iframe-transport', 'jquery.ui.widget']
-        }
+        },
+        'angular-route': {
+            deps: ['angular']
+        },
+
     }
 });
 

@@ -20,10 +20,10 @@
 }
 .items-table-container {
   position: absolute;
-  top: 0px;
-  right: 19px;
-  left: 25px;
-  bottom: 21px;
+  top: 15px;
+  right: 16px;
+  left: 18px;
+  bottom: 14px;
 }
 .items-table-container .items-table-wrapper {
   display: table;
@@ -36,11 +36,10 @@
 .items-table-container .items-table-wrapper .inner-row .inner-cell {
   display: table-cell;
 }
-.items-table-container .items-table-wrapper .properties-row {
-  background-color: ActiveBorder;
-}
-.items-table-container .items-table-wrapper .list-row {
-  height: 100%;
+.items-table-container .items-table-wrapper .checkbox-td {
+  width: 11px;
+  margin-top: 49px;
+  border-right: none;
 }
 .items-table-container .torrent-info-portlet {
   margin-bottom: 0px;
@@ -55,11 +54,20 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.torrent-progress .progress-striped {
+  margin-bottom: 0;
+  height: 10px;
+}
 .dropdown-user {
   margin-left: 6px !important;
 }
 .dropdown-user .dropdown-toggle {
   padding-right: 10px !important;
   padding-left: 14px !important;
+}
+.relative-wrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 /*# sourceMappingURL=common.css.map */
