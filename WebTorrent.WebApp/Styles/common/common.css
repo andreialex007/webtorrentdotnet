@@ -37,7 +37,7 @@
   display: table-cell;
 }
 .items-table-container .items-table-wrapper .checkbox-td {
-  width: 11px;
+  width: 41px !important;
   margin-top: 49px;
   border-right: none;
 }
@@ -61,6 +61,25 @@
   height: 100% !important;
   overflow-y: auto !important;
   overflow-x: hidden;
+}
+.items-table-container .torr-list-header-wrapper {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  bottom: 50%;
+  padding-bottom: 16px;
+}
+.items-table-container .list-divider {
+  width: 100%;
+  border-bottom: 1px solid #dbd7d7;
+}
+.items-table-container .top-divider {
+  position: absolute;
+  top: 33px;
+}
+.items-table-container > div {
+  position: relative;
+  height: 100%;
 }
 .progress {
   background-color: gainsboro;
@@ -87,5 +106,31 @@
   height: 100%;
   width: 100%;
   position: relative;
+}
+.h4-wrapper {
+  position: absolute;
+  top: 0px;
+  height: 34px;
+  right: 0px;
+  left: 0px;
+}
+.torrents-list-wrapper {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  top: 34px;
+  overflow-y: auto;
+}
+.torrent-info-wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  top: 50%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.torrent-info-wrapper > div {
+  height: 100%;
 }
 /*# sourceMappingURL=common.css.map */

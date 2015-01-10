@@ -172,7 +172,6 @@
     <Folder Include="Data\" />
     <Folder Include="Metronic\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Scripts\directives\" />
-    <Folder Include="Scripts\filters\" />
     <Folder Include="Scripts\libs\angular-1.3.3\i18n\ngLocale\" />
     <Folder Include="Styles\controls\" />
   </ItemGroup>
@@ -2839,6 +2838,7 @@
     <Content Include="Metronic\global\scripts\metronic.js" />
     <Content Include="Metronic\init.js" />
     <Content Include="Scripts\controllers\mainCtrl.js" />
+    <Content Include="Scripts\filters\reverse.js" />
     <Content Include="Scripts\libs\angular-1.3.3\angular-modules.js" />
     <Content Include="Scripts\app.config.js" />
     <Content Include="Scripts\app.js" />

@@ -1,5 +1,8 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Threading;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using MonoTorrent.Client;
@@ -18,20 +21,37 @@ namespace WebTorrent.TorrentLib.Tests
     {
         private ClientEngine _clientEngine;
         private readonly string _savePath = Path.GetTempPath();
+        private readonly List<TorrentManager> _managers = new List<TorrentManager>();
 
         [SetUp]
         public void SetUp()
         {
-            SetupTorrent();
         }
 
-        private void SetupTorrent()
+        [Test]
+        public void TestTorrent()
         {
             var settings = new EngineSettings { SavePath = _savePath };
             _clientEngine = new ClientEngine(settings);
 
+            var torrent = Torrent.Load(@"C:\test.torrent");
+            var manager = new TorrentManager(torrent, _savePath, new TorrentSettings());
+            _managers.Add(manager);
+            _clientEngine.Register(manager);
+            
+            manager.Start();
+            while (true)
+            {
+                Thread.Sleep(1000);
+                var state = manager.State;
+                Debug.WriteLine("state={0}", state);
+                Debug.WriteLine("percentage={0}", manager.Progress);
+                Debug.WriteLine("download speed={0}", manager.Monitor.DownloadSpeed);
+            }
 
-            //            var torrent = Torrent.Load(null);
+
+            //            _clientEngine.
+
             //            new Torrent();
         }
 

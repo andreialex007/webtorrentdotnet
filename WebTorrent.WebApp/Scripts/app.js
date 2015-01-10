@@ -2,8 +2,9 @@
         'Metronic/init',
         'Scripts/libs/angular-1.3.3/angular-modules',
         'Scripts/controllers/mainCtrl',
-        "Scripts/services/torrentSvc"
-], function (init, modules, mainCtrl, torrentSvc) {
+        "Scripts/services/torrentSvc",
+        "Scripts/filters/reverse"
+], function (init, modules, mainCtrl, torrentSvc, reverseFilter) {
     "use strict";
 
     window.
@@ -21,6 +22,8 @@
             .otherwise({ redirectTo: '/all' });
 
     });
+
+    app.filter('reverse', reverseFilter);
     app.factory('torrentSvc', torrentSvc);
     app.controller('mainCtrl', mainCtrl);
 

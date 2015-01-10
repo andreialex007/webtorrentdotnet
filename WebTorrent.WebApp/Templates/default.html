@@ -1,51 +1,61 @@
-﻿<!--<div class="items-table-container">-->
-<!--    <div class="items-table-wrapper">-->
-<!--        <div style="background-color: bisque" class="inner-row list-row">-->
-<!--            <div class="inner-cell">-->
-<!--                $1$                <div ng-include src="'/Templates/torrentsList.html'"></div>#1#-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div style="background-color: coral" class=" properties-row">-->
-<!--            <div>-->
-<!--                properties-->
-<!--                $1$                <div ng-include src="'/Templates/torrentInfo.html'"></div>#1#-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-<div class="items-table-container">
-
-    <div style="position: relative; height: 100%;">
-        <div style="position: absolute;width: 100%;top:0px;bottom: 50%;padding-bottom: 7px;">
-            <div class="relative-wrapper">
-                <div style="position: absolute;
-top: 0px;
-height: 34px;
-right: 0px;
-left: 0px;">
-                    <h4>Torrents list</h4>
+﻿<!-- BEGIN SIDEBAR -->
+<div class="page-sidebar-wrapper">
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <div class="page-sidebar navbar-collapse collapse">
+        <!-- BEGIN SIDEBAR MENU -->
+        <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+            <li class="heading">
+                <h3 class="uppercase">Torrents</h3>
+            </li>
+            <li ng-repeat="item in menuItems" class="{{ isActive(item) ? 'active' : '' }}">
+                <a href="{{item.url}}">
+                    <i class="fa {{ item.icon }}"></i>
+                    <span class="title">{{ item.name }}</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+            <li class="heading">
+                <h3 class="uppercase">Actions</h3>
+            </li>
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+</div>
+<!-- END SIDEBAR -->
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="items-table-container">
+            <div>
+                <div class="torr-list-header-wrapper" >
+                    <div class="list-divider top-divider"></div>
+                    <div class="relative-wrapper">
+                        <div class="h4-wrapper">
+                            <h4>Torrents list</h4>
+                        </div>
+                        
+                        <div class="torrents-list-wrapper">
+                            <div ng-include src="'/Templates/torrentsList.html'"></div>
+                        </div>
+                    </div>
+                    <div class="list-divider"></div>
                 </div>
-                <div style="
-                                                                                                                                                                                                                                                                                                                               position: absolute;
-                                                                                                                                                                                                                                                                                                                               bottom: 0px;
-                                                                                                                                                                                                                                                                                                                               left: 0px;
-                                                                                                                                                                                                                                                                                                                               right: 0px;
-                                                                                                                                                                                                                                                                                                                               top: 34px;
-                                                                                                                                                                                                                                                                                                                               overflow-y: auto
-">
-                    <div ng-include src="'/Templates/torrentsList.html'"></div>
+                <div class="torrent-info-wrapper">
+                    <div ng-include src="'/Templates/torrentInfo.html'"></div>
                 </div>
             </div>
         </div>
-        <div style="position: absolute;
-width: 100%;
-bottom: 0px;
-top: 50%;
-overflow-y: auto;
-overflow-x: hidden;">
-            <div style="height: 100%;" ng-include src="'/Templates/torrentInfo.html'"></div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            2014 &copy; Metronic by keenthemes.
+        </div>
+        <div class="page-footer-tools">
+            <span class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </span>
         </div>
     </div>
-
 </div>
+<!-- END CONTENT -->

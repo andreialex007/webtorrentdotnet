@@ -37,12 +37,12 @@
 
         self.getPaused = function () {
             return [
-               new torrentItem({
-                   id: 114,
-                   percentage: 5,
-                   name: "16_prajs_zabor_mramor_iz_betona (3).doc",
-                   isChecked: true
-               })
+                new torrentItem({
+                    id: 114,
+                    percentage: 5,
+                    name: "16_prajs_zabor_mramor_iz_betona (3).doc",
+                    isChecked: true
+                })
             ];
         }
 
@@ -83,43 +83,6 @@
 
             return [
                 torrentInfoTab({
-                    name: "Trackers",
-                    properties: {
-                        SavePath: {
-                            name: "Save path",
-                            value: "sdcard/torrent"
-                        },
-                        TotalSize: {
-                            name: "Total size",
-                            value: "49.9 MB"
-                        },
-                        Pieces: {
-                            name: "Pieces",
-                            value: "100 x 512 kb"
-                        },
-                        Avaliability: {
-                            name: "Avaliability",
-                            value: "100.0%"
-                        },
-                        CreatedOn: {
-                            name: "Created on",
-                            value: "2011-02-25"
-                        },
-                        Hash: {
-                            name: "Hash",
-                            value: "sksldjflsdjflsdjlwioeuroiwjlkvmsdkl"
-                        },
-                        CreatedWith: {
-                            name: "Created with",
-                            value: "mktorrent 1.0"
-                        },
-                        Comment: {
-                            name: "Comment",
-                            value: "Torrent created and tracked by"
-                        },
-                    }
-                }),
-                torrentInfoTab({
                     name: "Common",
                     properties: {
                         SavePath: {
@@ -136,6 +99,43 @@
                             value: "sdcard/torrent"
                         }
                     }
+                }),
+                torrentInfoTab({
+                    name: "Trackers",
+                    properties: [
+                        {
+                            name: "Save path",
+                            value: "sdcard/torrent"
+                        },
+                        {
+                            name: "Total size",
+                            value: "49.9 MB"
+                        },
+                        {
+                            name: "Pieces",
+                            value: "100 x 512 kb"
+                        },
+                        {
+                            name: "Avaliability",
+                            value: "100.0%"
+                        },
+                        {
+                            name: "Created on",
+                            value: "2011-02-25"
+                        },
+                        {
+                            name: "Hash",
+                            value: "sksldjflsdjflsdjlwioeuroiwjlkvmsdkl"
+                        },
+                        {
+                            name: "Created with",
+                            value: "mktorrent 1.0"
+                        },
+                        {
+                            name: "Comment",
+                            value: "Torrent created and tracked by"
+                        }
+                    ]
                 })
             ];
         }

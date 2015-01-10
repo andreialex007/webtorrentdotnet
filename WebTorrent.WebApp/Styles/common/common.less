@@ -32,6 +32,8 @@
     left: 18px;
     bottom: 14px;
 
+
+
     .items-table-wrapper {
         display: table;
         //  background-color: aqua;
@@ -55,7 +57,7 @@
         }
 
         .checkbox-td {
-            width: 11px;
+            width: 41px !important;
             margin-top: 49px;
             border-right: none;
         }
@@ -86,6 +88,29 @@
             }
         }
     }
+
+    .torr-list-header-wrapper {
+        position: absolute;
+        width: 100%;
+        top: 0px;
+        bottom: 50%;
+        padding-bottom: 16px;
+    }
+
+    .list-divider {
+        width: 100%;
+        border-bottom: 1px solid rgb(219, 215, 215);
+    }
+
+    .top-divider {
+        position: absolute;
+        top: 33px;
+    }
+}
+
+.items-table-container > div {
+    position: relative;
+    height: 100%;
 }
 
 
@@ -126,4 +151,34 @@
     height: 100%;
     width: 100%;
     position: relative;
+}
+
+.h4-wrapper {
+    position: absolute;
+    top: 0px;
+    height: 34px;
+    right: 0px;
+    left: 0px;
+}
+
+.torrents-list-wrapper {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 34px;
+    overflow-y: auto;
+}
+
+.torrent-info-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    top: 50%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.torrent-info-wrapper > div {
+    height: 100%;
 }

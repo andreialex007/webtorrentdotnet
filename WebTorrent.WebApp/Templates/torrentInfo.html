@@ -14,15 +14,17 @@
                 </li>
             </ul>
             <div class="tab-content">
-                <div ng-repeat="tab in infoTabs" class="tab-pane {{$index==0 ? 'active' : ''}}" id="portlet_tab_{{$index}}">
+                <div ng-repeat="tab in infoTabs"
+                     class="tab-pane {{$index==0 ? 'active' : ''}}"
+                     id="portlet_tab_{{$index + 1}}">
                     <div class="form-body">
-                        <div ng-repeat="(key, value) in properties" class="row">
+                        <div ng-repeat="item in tab.properties" class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label col-md-2">{{value.name}}:</label>
+                                    <label class="control-label col-md-2">{{item.name}}:</label>
                                     <div class="col-md-10">
                                         <p class="form-control-static">
-                                            {{value.value}}
+                                            {{item.value}}
                                         </p>
                                     </div>
                                 </div>
