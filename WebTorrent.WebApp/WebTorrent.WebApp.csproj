@@ -5039,6 +5039,7 @@
     <Content Include="Scripts\libs\jquery.ui.widget.js" />
     <Content Include="Scripts\libs\r.js" />
     <Content Include="Scripts\libs\require.js" />
+    <Content Include="Scripts\models\torrentInfoTab.js" />
     <Content Include="Scripts\models\torrentItem.js" />
     <Content Include="Scripts\services\torrentSvc.js" />
     <Content Include="Styles\common\common.css">

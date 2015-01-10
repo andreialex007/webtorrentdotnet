@@ -1,4 +1,7 @@
-﻿define(["Scripts/models/torrentItem"], function (torrentItem) {
+﻿define([
+    "Scripts/models/torrentItem",
+    "Scripts/models/torrentInfoTab"
+], function (torrentItem, torrentInfoTab) {
     'use strict';
 
     function torrentSvc() {
@@ -67,20 +70,74 @@
         }
 
         self.getAll = function () {
+            ///<summary>Получает список всех торрентов данного пользователя</summary>
+
             return self.getChecking()
                 .concat(self.getDownloading())
                 .concat(self.getCompleted())
                 .concat(self.getPaused());
         };
 
+        self.getTorrentData = function (id) {
+            ///<summary>Получает данные  для вкладок о торренте</summary>
 
-        self.getTorrentById = function (id) {
-            return torrentItem({
-                id: 3,
-                percentage: 75,
-                name: "Interstellar CAMRip",
-                isChecked: false
-            });
+            return [
+                torrentInfoTab({
+                    name: "Trackers",
+                    properties: {
+                        SavePath: {
+                            name: "Save path",
+                            value: "sdcard/torrent"
+                        },
+                        TotalSize: {
+                            name: "Total size",
+                            value: "49.9 MB"
+                        },
+                        Pieces: {
+                            name: "Pieces",
+                            value: "100 x 512 kb"
+                        },
+                        Avaliability: {
+                            name: "Avaliability",
+                            value: "100.0%"
+                        },
+                        CreatedOn: {
+                            name: "Created on",
+                            value: "2011-02-25"
+                        },
+                        Hash: {
+                            name: "Hash",
+                            value: "sksldjflsdjflsdjlwioeuroiwjlkvmsdkl"
+                        },
+                        CreatedWith: {
+                            name: "Created with",
+                            value: "mktorrent 1.0"
+                        },
+                        Comment: {
+                            name: "Comment",
+                            value: "Torrent created and tracked by"
+                        },
+                    }
+                }),
+                torrentInfoTab({
+                    name: "Common",
+                    properties: {
+                        SavePath: {
+                            name: "Save path",
+                            value: "sdcard/torrent"
+                        }
+                    }
+                }),
+                torrentInfoTab({
+                    name: "Data",
+                    properties: {
+                        SavePath: {
+                            name: "Save path",
+                            value: "sdcard/torrent"
+                        }
+                    }
+                })
+            ];
         }
 
         return self;

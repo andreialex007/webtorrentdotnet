@@ -42,7 +42,25 @@
   border-right: none;
 }
 .items-table-container .torrent-info-portlet {
-  margin-bottom: 0px;
+  margin-bottom: 0;
+  height: 100%;
+  position: relative;
+  padding-bottom: 109px;
+  overflow-y: hidden !important;
+}
+.items-table-container .torrent-info-portlet .portlet-body {
+  height: 100%;
+}
+.items-table-container .torrent-info-portlet .portlet-body .tab-content {
+  width: 100%;
+  bottom: 0px;
+  position: absolute;
+  top: 91px;
+}
+.items-table-container .torrent-info-portlet .portlet-body .tab-content .tab-pane {
+  height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden;
 }
 .progress {
   background-color: gainsboro;

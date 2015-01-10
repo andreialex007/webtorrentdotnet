@@ -21,8 +21,9 @@
                 break;
             default:
                 throw new Exception("correct path not provided");
-        }
+        };
 
+        $scope.infoTabs = torrentSvc.getTorrentData();
 
     }
 
