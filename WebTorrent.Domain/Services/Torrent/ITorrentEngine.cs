@@ -7,5 +7,6 @@ namespace WebTorrent.Domain.Services.Torrent
         List<TorrentDto> AllTorrents();
         List<TorrentDto> TorrentsWithState(TorrentState torrentState);
         TorrentDto GetTorrentById(int id);
+        TorrentFullInfo GetTorrentInfoBlocks(int id);
     }
 }

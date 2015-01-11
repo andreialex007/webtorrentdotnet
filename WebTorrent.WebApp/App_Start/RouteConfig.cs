@@ -11,10 +11,17 @@ namespace WebTorrent.WebApp
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.RouteExistingFiles = true;
 
-            routes.MapHttpRoute("Default Api", "api/{controller}/{id}");
+//            routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}", new { id = RouteParameter.Optional });
 
-            routes.MapRoute("all", "{*all}", new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+            //            routes.MapRoute(null, "api/torrents/downloading", new
+            //                                                          {
+            //                                                              controller = "Torrents",
+            //                                                              action = "TorrentsWithState"
+            //                                                          });
+            //            routes.MapRoute("Default Api", "api/{controller}/{id}/{state}", new { controller = "Torrents", id = RouteParameter.Optional }, new { id = @"^\d*$" });
+
+
+            routes.MapRoute("all", "{*all}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
         }
     }
 }

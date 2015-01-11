@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebTorrent.Domain.Services.Torrent
 {
-    public class TorrentDto
+    public class TorrentDto : ITorrentComonInfo
     {
         /// <summary>
         /// Ид торрента в базе
@@ -21,7 +21,7 @@ namespace WebTorrent.Domain.Services.Torrent
         /// <summary>
         /// Размер торрента
         /// </summary>
-        public int Size { get; set; }
+        public long Size { get; set; }
 
         /// <summary>
         /// Загружается ли на данный момент торрент

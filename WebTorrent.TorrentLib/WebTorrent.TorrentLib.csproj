@@ -96,15 +96,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientEngineWrapper.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TorrentManagerWrapper.cs" />
+    <Compile Include="TorrentApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common.Utils\Common.Utils.csproj">
+      <Project>{5A5A498E-ED1B-47BA-B1DA-8A1466F823D5}</Project>
+      <Name>Common.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebTorrent.Domain\WebTorrent.Domain.csproj">
       <Project>{dfa3c303-cffb-4dd0-acfb-293e43b717bb}</Project>
       <Name>WebTorrent.Domain</Name>

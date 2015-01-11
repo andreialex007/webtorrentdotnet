@@ -5,6 +5,8 @@
         Downloading = 1,
         Completed = 2,
         Checking = 3,
-        Paused = 4
+        Paused = 4,
+        Unknown = 5,
+        Error = 6,
     }
 }

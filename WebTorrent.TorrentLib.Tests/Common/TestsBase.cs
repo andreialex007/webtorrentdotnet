@@ -3,7 +3,7 @@ using NUnit.Framework;
 using StructureMap;
 using StructureMap.Graph;
 using StructureMap.Pipeline;
-using WebTorrent.Domain.Wrappers;
+//using WebTorrent.Domain.Wrappers;
 
 namespace WebTorrent.TorrentLib.Tests.Common
 {
@@ -24,8 +24,8 @@ namespace WebTorrent.TorrentLib.Tests.Common
         {
             ObjectFactory.Configure(config =>
                                     {
-                                        config.For<IClientEngine>().LifecycleIs<SingletonLifecycle>().Use<ClientEngineWrapper>();
-                                        config.For<ITorrentManager>().LifecycleIs<SingletonLifecycle>().Use<TorrentManagerWrapper>();
+//                                        config.For<IClientEngine>().LifecycleIs<SingletonLifecycle>().Use<ClientEngineWrapper>();
+//                                        config.For<ITorrentManager>().LifecycleIs<SingletonLifecycle>().Use<TorrentManagerWrapper>();
                                         config.Scan(
                                             x =>
                                             {

@@ -7,13 +7,13 @@
 
         }
 
-        public NameValue(int id, string name)
+        public NameValue(string id, string name)
         {
             Id = id;
             Name = name;
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
     }
 }

@@ -1,39 +1,48 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Common.Utils;
 using WebTorrent.Domain.Services.Torrent;
 
 namespace WebTorrent.WebApp.Controllers
 {
+    [RoutePrefix("api/torrents")]
     public class TorrentsController : ApiController
     {
-        // GET api/torrents
+        #region Read methods
+
+        [Route(@"")]
         public IEnumerable<TorrentDto> Get()
         {
             var torrentsList = TorrentEngine.Current.AllTorrents().ToList();
             return torrentsList;
         }
 
-        // GET api/torrents/5
-        public TorrentDto Get(int id)
+        [Route(@"{state}")]
+        public IEnumerable<TorrentDto> Get(string state)
         {
-            var torrent = TorrentEngine.Current.GetTorrentById(id);
-            return torrent;
+            var torrentState = (TorrentState)Enum.Parse(typeof(TorrentState), state.UppercaseFirst());
+            var torrents = TorrentEngine.Current.TorrentsWithState(torrentState);
+            return torrents;
         }
 
-        // POST api/torrents
+        #endregion
+
+        #region Write methods
+
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/torrents/5
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/torrents/5
         public void Delete(int id)
         {
         }
+
+        #endregion
     }
 }

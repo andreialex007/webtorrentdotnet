@@ -84,6 +84,7 @@
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="HtmlHelper.cs" />
     <Compile Include="JavascriptExtension.cs" />
+    <Compile Include="StringUtils.cs" />
     <Compile Include="TypeUtils.cs" />
     <Compile Include="DisplayNameExtended.cs" />
     <Compile Include="EnumHelper.cs" />

@@ -4,7 +4,6 @@ using System.Web;
 using Common.Utils;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using MonoTorrent.Client;
 using StructureMap;
 using StructureMap.Graph;
 using StructureMap.Pipeline;
@@ -16,6 +15,8 @@ using WebTorrent.TorrentLib;
 
 namespace WebTorrent.WebApp
 {
+    // ReSharper disable CSharpWarnings::CS0618
+
     public class IocConfig
     {
         public static void Bootstrap()
@@ -25,30 +26,26 @@ namespace WebTorrent.WebApp
             TorrentEngine.CurrentUserTorrentEngineCreator = () =>
                                                             {
                                                                 if (HttpContext.Current.Session["TorrentEngine"] == null)
-                                                                {
-                                                                    var clientEngine = new ClientEngine(new EngineSettings());
-                                                                    var clientEngineWrapper = new ClientEngineWrapper(clientEngine);
-                                                                    HttpContext.Current.Session["TorrentEngine"] = new TorrentEngine(clientEngineWrapper);
-                                                                }
+                                                                    HttpContext.Current.Session["TorrentEngine"] = new TorrentEngine(new TorrentApi());
+
                                                                 var torrentEngine = (TorrentEngine)HttpContext.Current.Session["TorrentEngine"];
                                                                 return torrentEngine;
                                                             };
 
             NHibertnateSession.FactoryCreator = () =>
-            {
-                var dbConfig = SQLiteConfiguration
-                    .Standard
-                    .UsingFile("C:\\nhibernate.db")
-                    .ShowSql();
+                                                {
+                                                    var dbConfig = MsSqlConfiguration.MsSql2012
+                                                        .ConnectionString(@"Data Source=ANDREI-PC\MSSQLSERVER2012;Initial Catalog=TorrentDb;Integrated Security=True")
+                                                        .ShowSql();
 
-                var sessionFactory = Fluently
-                    .Configure()
-                    .Database(dbConfig)
-                    .Mappings(x => x.FluentMappings.AddFromAssemblyOf<TorrentRecordMapping>())
-                    .BuildSessionFactory();
+                                                    var sessionFactory = Fluently
+                                                        .Configure()
+                                                        .Database(dbConfig)
+                                                        .Mappings(x => x.FluentMappings.AddFromAssemblyOf<TorrentRecordMapping>())
+                                                        .BuildSessionFactory();
 
-                return sessionFactory;
-            };
+                                                    return sessionFactory;
+                                                };
 
             ObjectFactory.Configure(config =>
             {
