@@ -14,11 +14,25 @@ namespace WebTorrent.Data
         public TorrentRecordMapping()
         {
             Table("TorrentRecords");
-            Id(x => x.Id).Column("Id");
-            Map(x => x.Name).Column("Name");
-            Map(x => x.Data).Column("Data");
-            Map(x => x.Completed).Column("Completed");
-            Map(x => x.State).Column("State").CustomType<TorrentState>();
+
+            Id(x => x.Id)
+                .Column("Id");
+
+            Map(x => x.Name)
+                .Column("Name");
+
+            Map(x => x.Data)
+                .Column("Data")
+                .CustomSqlType("varbinary(max)")
+                .Length(int.MaxValue);
+
+            Map(x => x.Completed)
+                .Column("Completed");
+
+            Map(x => x.State)
+                .Column("State")
+                .CustomType<TorrentState>();
+
             MapEntityBase();
         }
     }

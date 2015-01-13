@@ -17,7 +17,8 @@ namespace WebTorrent.TorrentLib
                 {MonoTorrentState.Paused, TorrentState.Paused},
                 {MonoTorrentState.Seeding, TorrentState.Completed},
                 {MonoTorrentState.Error, TorrentState.Error},
-                {MonoTorrentState.Stopping, TorrentState.Paused}
+                {MonoTorrentState.Stopping, TorrentState.Paused},
+                {MonoTorrentState.Stopped, TorrentState.Paused}
             };
 
         public static TorrentState ToDomainTorrentState(this MonoTorrentState torrentState)

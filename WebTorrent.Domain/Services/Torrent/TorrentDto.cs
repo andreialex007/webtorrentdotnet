@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Utils;
 
 namespace WebTorrent.Domain.Services.Torrent
 {
@@ -22,6 +23,12 @@ namespace WebTorrent.Domain.Services.Torrent
         /// Размер торрента
         /// </summary>
         public long Size { get; set; }
+
+
+        public string SizeString
+        {
+            get { return Size.BytesToString(); }
+        }
 
         /// <summary>
         /// Загружается ли на данный момент торрент
@@ -45,6 +52,11 @@ namespace WebTorrent.Domain.Services.Torrent
         /// Состояние загруженности торрента
         /// </summary>
         public TorrentState State { get; set; }
+
+        public string StateName
+        {
+            get { return State.ToString(); }
+        }
 
         /// <summary>
         /// Дата создания

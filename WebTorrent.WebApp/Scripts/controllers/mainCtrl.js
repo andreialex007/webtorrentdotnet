@@ -11,25 +11,40 @@
             { name: "Paused", url: "/paused", icon: "fa-pause" }
         ];
 
+        $scope.setActive = function (item) {
+            $($scope.torrents).each(function (i, el) {
+                el.selected = false;
+            });
+            item.selected = true;
+        }
+
         $scope.isActive = function (item) {
             return item.url == window.location.pathname;
         };
 
+        var successFunc = function (items) {
+            $scope.torrents = items;
+            var firstItem = $($scope.torrents).first()[0];
+            if (firstItem) {
+                firstItem.selected = true;
+            }
+        };
+
         switch (window.location.pathname) {
             case "/downloading":
-                $scope.torrents = torrentSvc.getDownloading();
+                torrentSvc.getDownloading(successFunc);
                 break;
             case "/completed":
-                $scope.torrents = torrentSvc.getCompleted();
+                torrentSvc.getCompleted(successFunc);
                 break;
             case "/checking":
-                $scope.torrents = torrentSvc.getChecking();
+                torrentSvc.getChecking(successFunc);
                 break;
             case "/paused":
-                $scope.torrents = torrentSvc.getPaused();
+                torrentSvc.getPaused(successFunc);
                 break;
             case "/all":
-                $scope.torrents = torrentSvc.getAll();
+                torrentSvc.getAll(successFunc);
                 break;
             default:
                 throw new Exception("correct path not provided");

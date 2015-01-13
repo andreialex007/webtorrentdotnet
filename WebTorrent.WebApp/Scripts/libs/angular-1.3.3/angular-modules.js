@@ -1,7 +1,8 @@
 ﻿define(
     [
         "angular",
-        "angular-route"
+        "angular-route",
+        "angular-resource"
     ],
     function () { }
 );

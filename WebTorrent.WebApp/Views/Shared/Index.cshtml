@@ -13,60 +13,10 @@
 
 <body class="page-header-fixed page-quick-sidebar-over-content">
 
-    <div class="page-header navbar navbar-fixed-top">
-        <div class="page-header-inner">
-            <div class="page-logo">
-                <a href="index.html">
-                    <img src="/Metronic/admin/layout/img/logo.png" alt="logo" class="logo-default" />
-                </a>
-                <div class="menu-toggler sidebar-toggler hide">
-                </div>
-            </div>
-            <form class="search-form search-form-expanded" action="extra_search.html" method="GET">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." name="query">
-                    <span class="input-group-btn">
-                        <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-                    </span>
-                </div>
-            </form>
+    <div ng-view="" class="ng-container">
 
-            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-            </a>
-            <div class="top-menu">
-                <button style="margin-top:5px" type="submit" class="btn bg-grey-cascade"><i class="fa fa-cogs"></i> Settings</button>
-                <ul class="nav navbar-nav pull-right">
 
-                    <!-- BEGIN USER LOGIN DROPDOWN -->
-                    <li class="dropdown dropdown-user">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <img alt="" class="img-circle hide1" src="/Metronic/admin/layout/img/avatar3_small.jpg" />
-                            <span class="username username-hide-on-mobile">
-                                Administrator
-                            </span>
-                            <i class="fa fa-edit"></i>
-                        </a>
-                    </li>
-                    <!-- END USER LOGIN DROPDOWN -->
-                    <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                    <li class="dropdown dropdown-quick-sidebar-toggler">
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <i class="fa fa-power-off"></i>
-                        </a>
-                    </li>
-                    <!-- END QUICK SIDEBAR TOGGLER -->
-                </ul>
-            </div>
-            <!-- END TOP NAVIGATION MENU -->
-        </div>
-        <!-- END HEADER INNER -->
-    </div>
-    <!-- END HEADER -->
-    <div class="clearfix">
-    </div>
 
-    <!-- BEGIN CONTAINER -->
-    <div ng-view="" class="page-container">
     </div>
 
     @if (Html.IsDebug())

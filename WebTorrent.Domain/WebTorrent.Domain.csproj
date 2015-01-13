@@ -78,6 +78,8 @@
       <HintPath>..\packages\structuremap.web.3.1.0.133\lib\net40\StructureMap.Web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.Registration" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
@@ -89,6 +91,7 @@
     <Reference Include="System.Data.SQLite.Linq">
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.94.1\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -96,6 +99,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\OrdersDbCommonException.cs" />
+    <Compile Include="Exceptions\ValidationException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Role\Role.cs" />
     <Compile Include="Services\TorrentInfoUpdater.cs" />
@@ -110,13 +115,26 @@
     <Compile Include="Services\Torrent\TorrentState.cs" />
     <Compile Include="Services\Torrent\TorrentEngine.cs" />
     <Compile Include="Services\Torrent\Trackers\TrackerItem.cs" />
-    <Compile Include="Services\User\User.cs" />
+    <Compile Include="Services\User\IUserService.cs" />
+    <Compile Include="Services\User\PasswordHasher.cs" />
+    <Compile Include="Services\User\UserRecord.cs" />
+    <Compile Include="Services\User\UserDto.cs" />
+    <Compile Include="Services\User\UserService.cs" />
     <Compile Include="Services\_Common\Entities\EntityBase.cs" />
     <Compile Include="Services\_Common\Entities\IIdEntity.cs" />
     <Compile Include="Services\_Common\Entities\INamedEntity.cs" />
     <Compile Include="Services\_Common\Entities\NameValue.cs" />
     <Compile Include="Services\_Common\NHibertnateSession.cs" />
     <Compile Include="Services\_Common\ServiceBase.cs" />
+    <Compile Include="Utils\Common.cs" />
+    <Compile Include="Utils\DbContextExtensions.cs" />
+    <Compile Include="Utils\DbValidation.cs" />
+    <Compile Include="Utils\DisplayNameExtended.cs" />
+    <Compile Include="Utils\EnumerableHelper.cs" />
+    <Compile Include="Utils\EnumHelper.cs" />
+    <Compile Include="Utils\LinqExtensions.cs" />
+    <Compile Include="Utils\SessionExtensions.cs" />
+    <Compile Include="Utils\ValidationExtensions.cs" />
     <Compile Include="Wrappers\ITorrentApi.cs" />
   </ItemGroup>
   <ItemGroup>

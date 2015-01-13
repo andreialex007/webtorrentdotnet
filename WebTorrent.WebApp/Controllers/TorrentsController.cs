@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web.Http;
 using Common.Utils;
 using WebTorrent.Domain.Services.Torrent;
+using WebTorrent.WebApp.Controllers.Common;
 
 namespace WebTorrent.WebApp.Controllers
 {
     [RoutePrefix("api/torrents")]
-    public class TorrentsController : ApiController
+    public class TorrentsController : ApiControllerBase
     {
         #region Read methods
 

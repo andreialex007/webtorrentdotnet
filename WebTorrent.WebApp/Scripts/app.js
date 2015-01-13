@@ -8,7 +8,7 @@
     "use strict";
 
     window.
-    app = angular.module('app', ['ngRoute' /* , 'ngResource', 'ngGrid' */]);
+    app = angular.module('app', ['ngRoute', 'ngResource' /* , 'ngResource', 'ngGrid' */]);
     app.config(function ($routeProvider, $locationProvider) {
 
         $locationProvider.html5Mode(true);

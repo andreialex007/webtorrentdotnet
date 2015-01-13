@@ -25,6 +25,12 @@
   left: 18px;
   bottom: 14px;
 }
+.items-table-container tr:not(.selected) {
+  cursor: pointer;
+}
+.items-table-container tr.selected td {
+  background-color: lemonchiffon !important;
+}
 .items-table-container .items-table-wrapper {
   display: table;
   width: 100%;

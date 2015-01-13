@@ -4,7 +4,8 @@
         'jquery': 'Metronic/global/plugins/jquery-1.11.0.min',
         "jquery.ui.widget": "Scripts/libs/jquery.ui.widget",
         "angular": 'Scripts/libs/angular-1.3.3/angular',
-        "angular-route": 'Scripts/libs/angular-1.3.3/angular-route'
+        "angular-route": 'Scripts/libs/angular-1.3.3/angular-route',
+        "angular-resource": 'Scripts/libs/angular-1.3.3/angular-resource'
     },
     shim: {
         'jquery': {
@@ -75,6 +76,9 @@
             deps: ['Scripts/libs/jquery.iframe-transport', 'jquery.ui.widget']
         },
         'angular-route': {
+            deps: ['angular']
+        },
+        'angular-resource': {
             deps: ['angular']
         },
 

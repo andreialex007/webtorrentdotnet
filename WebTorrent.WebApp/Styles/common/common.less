@@ -32,13 +32,22 @@
     left: 18px;
     bottom: 14px;
 
+    tr:not(.selected) {
+        cursor: pointer;
+    }
 
+    tr.selected td {
+        background-color: lemonchiffon !important;
+    }
 
     .items-table-wrapper {
         display: table;
         //  background-color: aqua;
         width: 100%;
         height: 100%;
+
+
+
 
         .inner-row {
             display: table-row;

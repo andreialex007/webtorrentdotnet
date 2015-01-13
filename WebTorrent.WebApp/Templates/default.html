@@ -1,61 +1,126 @@
-﻿<!-- BEGIN SIDEBAR -->
-<div class="page-sidebar-wrapper">
-    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-    <div class="page-sidebar navbar-collapse collapse">
-        <!-- BEGIN SIDEBAR MENU -->
-        <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
-            <li class="heading">
-                <h3 class="uppercase">Torrents</h3>
-            </li>
-            <li ng-repeat="item in menuItems" class="{{ isActive(item) ? 'active' : '' }}">
-                <a href="{{item.url}}">
-                    <i class="fa {{ item.icon }}"></i>
-                    <span class="title">{{ item.name }}</span>
-                    <span class="selected"></span>
-                </a>
-            </li>
-            <li class="heading">
-                <h3 class="uppercase">Actions</h3>
-            </li>
-        </ul>
-        <!-- END SIDEBAR MENU -->
+﻿<div class="page-header navbar navbar-fixed-top">
+    <div class="page-header-inner">
+        <div class="page-logo">
+            <a href="index.html">
+                <img src="/Metronic/admin/layout/img/logo.png" alt="logo" class="logo-default" />
+            </a>
+            <div class="menu-toggler sidebar-toggler hide">
+            </div>
+        </div>
+        <form class="search-form search-form-expanded" action="extra_search.html" method="GET">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search..." name="query">
+                <span class="input-group-btn">
+                    <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+                </span>
+            </div>
+        </form>
+
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+        </a>
+        <div class="top-menu">
+            <div class="nav navbar-nav">
+                <button style="margin-top:5px" class="btn btn-link "><i class="fa fa-plus font-green-haze"></i></button>
+                <button style="margin-top:5px" class="btn btn-link "><i class="fa fa-pause font-yellow-casablanca"></i></button>
+                <button style="margin-top:5px" class="btn btn-link "><i class="fa fa-play font-blue-steel"></i></button>
+                <button style="margin-top:5px" class="btn btn-link "><i class="fa fa-stop font-grey-gallery"></i></button>
+                <button style="margin-top:5px" class="btn btn-link "><i class="fa fa-remove font-red-thunderbird"></i></button>
+            </div>
+
+            <button style="margin-top:5px" type="submit" class="btn btn-circle blue-hoki"><i class="fa fa-cogs"></i> Settings</button>
+            <ul class="nav navbar-nav pull-right">
+
+                <!-- BEGIN USER LOGIN DROPDOWN -->
+                <li class="dropdown dropdown-user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <img alt="" class="img-circle hide1" src="/Metronic/admin/layout/img/avatar3_small.jpg" />
+                        <span class="username username-hide-on-mobile">
+                            Administrator
+                        </span>
+                        <i class="fa fa-edit"></i>
+                    </a>
+                </li>
+                <!-- END USER LOGIN DROPDOWN -->
+                <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                <li class="dropdown dropdown-quick-sidebar-toggler">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <i class="fa fa-power-off"></i>
+                    </a>
+                </li>
+                <!-- END QUICK SIDEBAR TOGGLER -->
+            </ul>
+        </div>
+        <!-- END TOP NAVIGATION MENU -->
     </div>
+    <!-- END HEADER INNER -->
 </div>
-<!-- END SIDEBAR -->
-<!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
-    <div class="page-content">
-        <div class="items-table-container">
-            <div>
-                <div class="torr-list-header-wrapper" >
-                    <div class="list-divider top-divider"></div>
-                    <div class="relative-wrapper">
-                        <div class="h4-wrapper">
-                            <h4>Torrents list</h4>
+<!-- END HEADER -->
+<div class="clearfix">
+</div>
+
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar-wrapper">
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+        <div class="page-sidebar navbar-collapse collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+                <li class="heading">
+                    <h3 class="uppercase">Torrents</h3>
+                </li>
+                <li ng-repeat="item in menuItems" class="{{ isActive(item) ? 'active' : '' }}">
+                    <a href="{{item.url}}">
+                        <i class="fa {{ item.icon }}"></i>
+                        <span class="title">{{ item.name }}</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <!--            <li class="heading">-->
+                <!--                <h3 class="uppercase">Actions</h3>-->
+                <!--            </li>-->
+            </ul>
+            <!-- END SIDEBAR MENU -->
+        </div>
+    </div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="items-table-container">
+                <div>
+                    <div class="torr-list-header-wrapper">
+                        <div class="list-divider top-divider"></div>
+                        <div class="relative-wrapper">
+                            <div class="h4-wrapper">
+                                <h4>Torrents list</h4>
+                            </div>
+
+                            <div class="torrents-list-wrapper">
+                                <div ng-include src="'/Templates/torrentsList.html'"></div>
+                            </div>
                         </div>
-                        
-                        <div class="torrents-list-wrapper">
-                            <div ng-include src="'/Templates/torrentsList.html'"></div>
-                        </div>
+                        <div class="list-divider"></div>
                     </div>
-                    <div class="list-divider"></div>
-                </div>
-                <div class="torrent-info-wrapper">
-                    <div ng-include src="'/Templates/torrentInfo.html'"></div>
+                    <div class="torrent-info-wrapper">
+                        <div ng-include src="'/Templates/torrentInfo.html'"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="page-footer">
-        <div class="page-footer-inner">
-            2014 &copy; Metronic by keenthemes.
+        <div class="page-footer">
+            <div class="page-footer-inner">
+                2014 &copy; Metronic by keenthemes.
+            </div>
+            <div class="page-footer-tools">
+                <span class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </span>
+            </div>
         </div>
-        <div class="page-footer-tools">
-            <span class="go-top">
-                <i class="fa fa-angle-up"></i>
-            </span>
-        </div>
     </div>
+    <!-- END CONTENT -->
+
 </div>
-<!-- END CONTENT -->
+

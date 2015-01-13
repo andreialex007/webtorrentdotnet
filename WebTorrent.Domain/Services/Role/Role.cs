@@ -7,9 +7,9 @@ using WebTorrent.Domain.Services._Common.Entities;
 
 namespace WebTorrent.Domain.Services.Role
 {
-    public class Role : EntityBase, INamedEntity
+    public class Role 
     {
-        public override int Id { get; set; }
-        public string Name { get; set; }
+        public const string Administrator = "Administrator";
+        public const string User = "User";
     }
 }

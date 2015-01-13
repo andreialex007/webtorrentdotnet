@@ -6,7 +6,8 @@
         Completed = 2,
         Checking = 3,
         Paused = 4,
-        Unknown = 5,
-        Error = 6,
+//        Stopped = 5,
+        Unknown = 6,
+        Error = 7,
     }
 }

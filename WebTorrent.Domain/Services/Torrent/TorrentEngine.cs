@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common.Utils;
+using NHibernate;
 using NHibernate.Linq;
 using WebTorrent.Domain.Services.Torrent.Files;
 using WebTorrent.Domain.Services.Torrent.Peers;
@@ -44,14 +45,25 @@ namespace WebTorrent.Domain.Services.Torrent
                     .OrderBy(x => x.Id)
                     .ToList();
 
-                foreach (var torrentRecord in torrents)
+                using (var transaction = session.BeginTransaction())
                 {
-                    _torrentApi.AddTorrent(new TorrentDto
-                                           {
-                                               Id = torrentRecord.Id,
-                                               Data = torrentRecord.Data
-                                           });
-                }
+                    foreach (var record in torrents)
+                    {
+                        var torrentDto = new TorrentDto
+                        {
+                            Id = record.Id,
+                            Data = record.Data
+                        };
+                        _torrentApi.AddTorrent(torrentDto);
+
+                        record.Name = torrentDto.Name;
+                        record.State = torrentDto.State;
+                        record.Data = torrentDto.Data;
+                        
+                        session.Update(record);
+                    }
+                    transaction.Commit();
+                } 
             }
         }
 
@@ -68,6 +80,8 @@ namespace WebTorrent.Domain.Services.Torrent
                                      State = x.State
                                  })
                     .ToList();
+
+                torrents.ForEach(x => _torrentApi.LoadTorrentInfo(x));
 
                 return torrents;
             }
@@ -89,6 +103,8 @@ namespace WebTorrent.Domain.Services.Torrent
                                      State = x.State
                                  })
                     .ToList();
+
+                torrents.ForEach(x => _torrentApi.LoadTorrentInfo(x));
 
                 return torrents;
             }
