@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\OrdersDbCommonException.cs" />
     <Compile Include="Exceptions\ValidationException.cs" />
+    <Compile Include="Extensions\DataExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Role\Role.cs" />
     <Compile Include="Services\TorrentInfoUpdater.cs" />

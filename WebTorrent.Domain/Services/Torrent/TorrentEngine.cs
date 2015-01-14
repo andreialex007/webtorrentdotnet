@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Common.Utils;
-using NHibernate;
 using NHibernate.Linq;
+using WebTorrent.Domain.Extensions;
 using WebTorrent.Domain.Services.Torrent.Files;
 using WebTorrent.Domain.Services.Torrent.Peers;
 using WebTorrent.Domain.Services.Torrent.Trackers;
+using WebTorrent.Domain.Services.User;
 using WebTorrent.Domain.Services._Common;
 using WebTorrent.Domain.Services._Common.Entities;
 using WebTorrent.Domain.Wrappers;
@@ -31,39 +29,34 @@ namespace WebTorrent.Domain.Services.Torrent
 
         private readonly ITorrentApi _torrentApi;
 
+        #region Public members
+
         public TorrentEngine(ITorrentApi torrentApi)
         {
             _torrentApi = torrentApi;
             InitTorrents();
         }
 
-        private void InitTorrents()
+        public void Add(TorrentDto torrentDto)
         {
             using (var session = OpenSession())
             {
-                var torrents = session.Query<TorrentRecord>()
-                    .OrderBy(x => x.Id)
-                    .ToList();
-
                 using (var transaction = session.BeginTransaction())
                 {
-                    foreach (var record in torrents)
+                    _torrentApi.AddTorrent(torrentDto);
+                    var userRecord = new TorrentRecord
                     {
-                        var torrentDto = new TorrentDto
-                        {
-                            Id = record.Id,
-                            Data = record.Data
-                        };
-                        _torrentApi.AddTorrent(torrentDto);
-
-                        record.Name = torrentDto.Name;
-                        record.State = torrentDto.State;
-                        record.Data = torrentDto.Data;
-                        
-                        session.Update(record);
-                    }
+                        Id = torrentDto.Id,
+                        Name = torrentDto.Name,
+                        Data = torrentDto.Data,
+                        Completed = torrentDto.Completed,
+                        Created = torrentDto.Created,
+                        Modified = torrentDto.Modified,
+                        State = torrentDto.State,
+                    };
+                    session.Save(userRecord);
                     transaction.Commit();
-                } 
+                }
             }
         }
 
@@ -127,6 +120,18 @@ namespace WebTorrent.Domain.Services.Torrent
             }
         }
 
+        public void Delete(int id)
+        {
+            using (var session = OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.DeleteById<TorrentRecord>(id);
+                    transaction.Commit();
+                }
+            }
+        }
+
         public TorrentFullInfo GetTorrentInfoBlocks(int id)
         {
             using (var session = OpenSession())
@@ -165,6 +170,29 @@ namespace WebTorrent.Domain.Services.Torrent
                                                          }
                                       };
                 return torrentFullInfo;
+            }
+        }
+
+        #endregion
+
+        private void InitTorrents()
+        {
+            using (var session = OpenSession())
+            {
+                var torrents = session.Query<TorrentRecord>()
+                    .OrderBy(x => x.Id)
+                    .ToList();
+
+                using (var transaction = session.BeginTransaction())
+                {
+                    foreach (var record in torrents)
+                    {
+                        
+
+                        session.Update(record);
+                    }
+                    transaction.Commit();
+                }
             }
         }
     }

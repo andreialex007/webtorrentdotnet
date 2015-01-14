@@ -27,6 +27,11 @@
             $resource("/api/torrents").query({}, success);
         };
 
+        self.deleteTorrent = function (id, success) {
+            var torrentResource = $resource('/api/torrents/:id');
+            torrentResource.delete({ id: id }, success);
+        }
+
         self.getTorrentData = function (id) {
             ///<summary>Получает данные  для вкладок о торренте</summary>
 

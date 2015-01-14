@@ -20,11 +20,12 @@
         </a>
         <div class="top-menu">
             <div class="nav navbar-nav">
-                <button style="margin-top:5px" class="btn btn-link "><i class="fa fa-plus font-green-haze"></i></button>
+                <button style="margin-top:5px" on-file-changed="fileChanged()" class="btn btn-link "><i class="fa fa-plus font-green-haze"></i></button>
+                <input style="display: none;" type="file" id="torrent-file-upload-input" />
                 <button style="margin-top:5px" class="btn btn-link "><i class="fa fa-pause font-yellow-casablanca"></i></button>
                 <button style="margin-top:5px" class="btn btn-link "><i class="fa fa-play font-blue-steel"></i></button>
                 <button style="margin-top:5px" class="btn btn-link "><i class="fa fa-stop font-grey-gallery"></i></button>
-                <button style="margin-top:5px" class="btn btn-link "><i class="fa fa-remove font-red-thunderbird"></i></button>
+                <button ng-click="deleteTorrent()" style="margin-top:5px" class="btn btn-link "><i class="fa fa-remove font-red-thunderbird"></i></button>
             </div>
 
             <button style="margin-top:5px" type="submit" class="btn btn-circle blue-hoki"><i class="fa fa-cogs"></i> Settings</button>

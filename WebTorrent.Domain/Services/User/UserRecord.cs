@@ -15,12 +15,12 @@ namespace WebTorrent.Domain.Services.User
     {
         public override int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         [Required]
-        public string Email { get; set; }
+        public virtual string Email { get; set; }
         [Required]
-        public string Password { get; set; }
+        public virtual string Password { get; set; }
         [Required]
-        public string Role { get; set; }
+        public virtual string Role { get; set; }
     }
 }

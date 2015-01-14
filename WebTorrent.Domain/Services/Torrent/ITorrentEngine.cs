@@ -8,5 +8,7 @@ namespace WebTorrent.Domain.Services.Torrent
         List<TorrentDto> TorrentsWithState(TorrentState torrentState);
         TorrentDto GetTorrentById(int id);
         TorrentFullInfo GetTorrentInfoBlocks(int id);
+        void Delete(int id);
+        void Add(TorrentDto torrentDto);
     }
 }

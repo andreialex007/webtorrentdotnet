@@ -11,6 +11,32 @@
             { name: "Paused", url: "/paused", icon: "fa-pause" }
         ];
 
+        $scope.fileChanged = function (event) {
+
+            var xhr = new XMLHttpRequest();
+            var formData = new FormData();
+            if (event.target.files.length != 1)
+                return;
+
+            formData.append("file", event.target.files[0]);
+            xhr.open("POST", "/api/torrents/upload/", true);
+            xhr.send(formData);
+            xhr.addEventListener("load", function () {
+                console.log("file uploaded");
+            }, false);
+        };
+
+        $scope.deleteTorrent = function () {
+            debugger;
+            var selectedTorrent = $.grep($scope.torrents, function (x) { return x.selected == true; })[0];
+            torrentSvc.deleteTorrent(selectedTorrent.Id, function() {
+                debugger;
+            });
+            debugger;
+        }
+
+        //#region active menu item
+
         $scope.setActive = function (item) {
             $($scope.torrents).each(function (i, el) {
                 el.selected = false;
@@ -21,6 +47,8 @@
         $scope.isActive = function (item) {
             return item.url == window.location.pathname;
         };
+
+        //#endregion
 
         var successFunc = function (items) {
             $scope.torrents = items;

@@ -3,8 +3,9 @@
         'Scripts/libs/angular-1.3.3/angular-modules',
         'Scripts/controllers/mainCtrl',
         "Scripts/services/torrentSvc",
-        "Scripts/filters/reverse"
-], function (init, modules, mainCtrl, torrentSvc, reverseFilter) {
+        "Scripts/filters/reverse",
+        "Scripts/directives/onFileChanged"
+], function (init, modules, mainCtrl, torrentSvc, reverseFilter, onFileChanged) {
     "use strict";
 
     window.
@@ -25,6 +26,7 @@
 
     app.filter('reverse', reverseFilter);
     app.factory('torrentSvc', torrentSvc);
+    app.directive("onFileChanged", onFileChanged);
     app.controller('mainCtrl', mainCtrl);
 
     angular.bootstrap(document, ['app']);
