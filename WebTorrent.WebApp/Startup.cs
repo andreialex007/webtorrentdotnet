@@ -1,15 +1,18 @@
-﻿using Microsoft.Owin;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Owin;
 using Owin;
-using WebTorrent.WebApp;
 
-[assembly: OwinStartup(typeof(Startup))]
+[assembly: OwinStartup(typeof(WebTorrent.WebApp.Startup))]
+
 namespace WebTorrent.WebApp
 {
-    public class Startup
+    public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-           
+
         }
     }
 }

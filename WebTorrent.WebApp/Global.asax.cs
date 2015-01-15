@@ -19,22 +19,22 @@ namespace WebTorrent.WebApp
 
         protected void Application_Start()
         {
-//            new MultipartFormFormatter().SupportedMediaTypes
+            //            new MultipartFormFormatter().SupportedMediaTypes
 
 
-            
 
-            var mediaTypeFormatter = GlobalConfiguration.Configuration.Formatters.Single(x => x.GetType() == typeof (FormUrlEncodedMediaTypeFormatter));
+
+            var mediaTypeFormatter = GlobalConfiguration.Configuration.Formatters.Single(x => x.GetType() == typeof(FormUrlEncodedMediaTypeFormatter));
             mediaTypeFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue(StringMultipartMediaType));
             mediaTypeFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue(StringApplicationMediaType));
 
 
 
-//            ModelBinders
+            //            ModelBinders
 
-//            ModelBinders.Binders.DefaultBinder = new CustomModelBinder();
+            //            ModelBinders.Binders.DefaultBinder = new CustomModelBinder();
 
-//            GlobalConfiguration.Configuration.Formatters.Add(new MultipartFormFormatter());
+            //            GlobalConfiguration.Configuration.Formatters.Add(new MultipartFormFormatter());
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

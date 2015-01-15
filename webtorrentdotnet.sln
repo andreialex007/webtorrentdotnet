@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{278E2EAC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.Domain", "WebTorrent.Domain\WebTorrent.Domain.csproj", "{DFA3C303-CFFB-4DD0-ACFB-293E43B717BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.WebApp", "WebTorrent.WebApp\WebTorrent.WebApp.csproj", "{43C0DC96-E257-44F5-B95C-35DC75C0DFD2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.TorrentLib", "WebTorrent.TorrentLib\WebTorrent.TorrentLib.csproj", "{5C2842E0-06A0-4331-8629-F5146100F319}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.TorrentLib.Tests", "WebTorrent.TorrentLib.Tests\WebTorrent.TorrentLib.Tests.csproj", "{CB04306F-9141-488C-99B3-3A8F238CE915}"
@@ -24,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildGenerator", "BuildGene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.Data", "WebTorrent.Data\WebTorrent.Data.csproj", "{7EC68EAB-D175-4414-A064-95BAABFA2918}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTorrent.WebApp", "WebTorrent.WebApp\WebTorrent.WebApp.csproj", "{6A2F66D4-EBAD-45C9-A19F-41A02E3CE99F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,10 +34,6 @@ Global
 		{DFA3C303-CFFB-4DD0-ACFB-293E43B717BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFA3C303-CFFB-4DD0-ACFB-293E43B717BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFA3C303-CFFB-4DD0-ACFB-293E43B717BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43C0DC96-E257-44F5-B95C-35DC75C0DFD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43C0DC96-E257-44F5-B95C-35DC75C0DFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43C0DC96-E257-44F5-B95C-35DC75C0DFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43C0DC96-E257-44F5-B95C-35DC75C0DFD2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C2842E0-06A0-4331-8629-F5146100F319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5C2842E0-06A0-4331-8629-F5146100F319}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C2842E0-06A0-4331-8629-F5146100F319}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -58,6 +54,10 @@ Global
 		{7EC68EAB-D175-4414-A064-95BAABFA2918}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EC68EAB-D175-4414-A064-95BAABFA2918}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EC68EAB-D175-4414-A064-95BAABFA2918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A2F66D4-EBAD-45C9-A19F-41A02E3CE99F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A2F66D4-EBAD-45C9-A19F-41A02E3CE99F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A2F66D4-EBAD-45C9-A19F-41A02E3CE99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A2F66D4-EBAD-45C9-A19F-41A02E3CE99F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

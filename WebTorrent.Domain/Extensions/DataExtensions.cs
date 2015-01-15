@@ -15,7 +15,7 @@ namespace WebTorrent.Domain.Extensions
         public static void DeleteById<T>(this ISession session, int id) where T : EntityBase
         {
             var record = session.Query<T>()
-                       .OrderBy(x => x.Id)
+                       .Where(x => x.Id == id)
                        .Select(x => x)
                        .Single();
             session.Delete(record);
