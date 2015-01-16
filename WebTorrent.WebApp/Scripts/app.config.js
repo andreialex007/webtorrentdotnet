@@ -5,7 +5,9 @@
         "jquery.ui.widget": "Scripts/libs/jquery.ui.widget",
         "angular": 'Scripts/libs/angular-1.3.3/angular',
         "angular-route": 'Scripts/libs/angular-1.3.3/angular-route',
-        "angular-resource": 'Scripts/libs/angular-1.3.3/angular-resource'
+        "angular-resource": 'Scripts/libs/angular-1.3.3/angular-resource',
+        "signalr": 'Scripts/libs/jquery.signalr-2.1.0',
+        "signalr-proxies": 'signalr/js?noext'
     },
     shim: {
         'jquery': {
@@ -49,6 +51,12 @@
         },
         'Metronic/global/plugins/uniform/jquery.uniform.min': {
             deps: ['jquery']
+        },
+        'signalr': {
+            deps: ['jquery']
+        },
+        'signalr-proxies': {
+            deps: ['jquery', "signalr"]
         },
         'Metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min': {
             deps: ['jquery', 'Metronic/global/plugins/bootstrap/js/bootstrap.min']

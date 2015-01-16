@@ -14,43 +14,28 @@ namespace WebTorrent.Domain.Services
     /// </summary>
     public class TorrentInfoUpdater
     {
-        #region Private members
-
-        private Timer _timer;
-        private TorrentFullInfo _torrentFullInfo;
+        private static Timer _timer;
+        private static Action _event;
         private const int UpdateTimeInterval = 1000;
 
-        private void OnTimerEvent()
+        public static Action Event
         {
-            var handler = TimerEvent;
-            if (handler != null)
-                handler(_torrentFullInfo);
+            get { return _event; }
+            set
+            {
+                _event = value;
+
+                if (_timer != null)
+                {
+                    _timer.Dispose();
+                    _timer = null;
+                }
+
+                _timer = new Timer();
+                _timer.Elapsed += (sender, args) => _event();
+                _timer.Interval = UpdateTimeInterval;
+                _timer.Enabled = true;
+            }
         }
-
-        #endregion
-
-        #region Public members
-
-        public void StartUpdate(int torrentId)
-        {
-            _timer = new Timer();
-            _timer.Elapsed += (sender, args) =>
-                              {
-                                  _torrentFullInfo = TorrentEngine.Current.GetTorrentInfoBlocks(torrentId);
-                              };
-            _timer.Interval = UpdateTimeInterval;
-            _timer.Enabled = true;
-
-        }
-
-        public void StopUpdate()
-        {
-            _timer.Dispose();
-            _timer = null;
-        }
-
-        public event Action<TorrentFullInfo> TimerEvent = null;
-
-        #endregion
     }
 }

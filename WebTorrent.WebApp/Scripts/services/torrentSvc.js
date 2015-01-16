@@ -8,23 +8,33 @@
         var self = {};
 
         self.getDownloading = function (success) {
-            $resource("/api/torrents/downloading").query({}, success);
+            $resource("/api/torrents/downloading").query({}, function (data) {
+                success($.map(data, function (x) { return new torrentItem(x); }));
+            });
         }
 
         self.getChecking = function (success) {
-            $resource("/api/torrents/checking").query({}, success);
+            $resource("/api/torrents/checking").query({}, function (data) {
+                success($.map(data, function (x) { return new torrentItem(x); }));
+            });
         }
 
         self.getPaused = function (success) {
-            $resource("/api/torrents/paused").query({}, success);
+            $resource("/api/torrents/paused").query({}, function (data) {
+                success($.map(data, function (x) { return new torrentItem(x); }));
+            });
         }
 
         self.getCompleted = function (success) {
-            $resource("/api/torrents/completed").query({}, success);
+            $resource("/api/torrents/completed").query({}, function (data) {
+                success($.map(data, function (x) { return new torrentItem(x); }));
+            });
         }
 
         self.getAll = function (success) {
-            $resource("/api/torrents").query({}, success);
+            $resource("/api/torrents").query({}, function (data) {
+                success($.map(data, function (x) { return new torrentItem(x); }));
+            });
         };
 
         self.deleteTorrent = function (id, success) {

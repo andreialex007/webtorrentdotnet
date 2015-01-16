@@ -5,7 +5,14 @@
         "Scripts/services/torrentSvc",
         "Scripts/filters/reverse",
         "Scripts/directives/onFileChanged"
-], function (init, modules, mainCtrl, torrentSvc, reverseFilter, onFileChanged) {
+        
+], function (
+    init,
+    modules,
+    mainCtrl,
+    torrentSvc,
+    reverseFilter,
+    onFileChanged) {
     "use strict";
 
     window.
@@ -31,4 +38,5 @@
 
     angular.bootstrap(document, ['app']);
 
+    debugger;
 });

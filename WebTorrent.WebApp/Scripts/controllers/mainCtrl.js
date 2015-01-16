@@ -1,7 +1,15 @@
-﻿define([], function () {
+﻿define([
+    "Scripts/signalr/connectionInit"
+], function (connectionInit) {
     'use strict';
 
     function mainCtrl($scope, $routeParams, torrentSvc) {
+
+        $scope.torrents = [];
+
+        $scope.getTorrentsFunction = function () {
+            console.log("getTorrentsFunction");
+        }
 
         $scope.menuItems = [
             { name: "All", url: "/all", icon: "fa-cloud" },
@@ -29,7 +37,7 @@
         $scope.deleteTorrent = function () {
             debugger;
             var selectedTorrent = $.grep($scope.torrents, function (x) { return x.selected == true; })[0];
-            torrentSvc.deleteTorrent(selectedTorrent.Id, function() {
+            torrentSvc.deleteTorrent(selectedTorrent.Id, function () {
                 debugger;
             });
             debugger;
@@ -51,28 +59,46 @@
         //#endregion
 
         var successFunc = function (items) {
-            $scope.torrents = items;
-            var firstItem = $($scope.torrents).first()[0];
-            if (firstItem) {
-                firstItem.selected = true;
+            var selectedIndex = 0;
+            var selectedItem = $.grep($scope.torrents, function (x) { return x.selected === true; })[0];
+            if (selectedItem) {
+                selectedIndex = $.inArray(selectedItem, $scope.torrents);
             }
+
+            if ($scope.torrents.length != items.length) {
+                $scope.torrents = items;
+            } else {
+                $.extend($scope.torrents, items);
+            }
+            
+            $scope.torrents[selectedIndex].selected = true;
         };
 
         switch (window.location.pathname) {
             case "/downloading":
-                torrentSvc.getDownloading(successFunc);
+                $scope.getTorrentsFunction = function () {
+                    torrentSvc.getDownloading(successFunc);
+                }
                 break;
             case "/completed":
-                torrentSvc.getCompleted(successFunc);
+                $scope.getTorrentsFunction = function () {
+                    torrentSvc.getCompleted(successFunc);
+                }
                 break;
             case "/checking":
-                torrentSvc.getChecking(successFunc);
+                $scope.getTorrentsFunction = function () {
+                    torrentSvc.getChecking(successFunc);
+                }
                 break;
             case "/paused":
-                torrentSvc.getPaused(successFunc);
+                $scope.getTorrentsFunction = function () {
+                    torrentSvc.getPaused(successFunc);
+                }
                 break;
             case "/all":
-                torrentSvc.getAll(successFunc);
+                $scope.getTorrentsFunction = function () {
+                    torrentSvc.getAll(successFunc);
+                }
                 break;
             default:
                 throw new Exception("correct path not provided");
@@ -84,6 +110,9 @@
         setTimeout(function () {
             Metronic.init();
         }, 70);
+
+        $scope.getTorrentsFunction();
+        connectionInit($scope.getTorrentsFunction);
     }
 
     return mainCtrl;
