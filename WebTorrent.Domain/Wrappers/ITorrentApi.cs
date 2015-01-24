@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using WebTorrent.Domain.Services.Torrent;
 using WebTorrent.Domain.Services.Torrent.Files;
@@ -10,7 +11,7 @@ namespace WebTorrent.Domain.Wrappers
     public interface ITorrentApi
     {
         void AddTorrent(TorrentDto torrentDto);
-        void LoadTorrentInfo(TorrentDto torrentDto);
+        void LoadTorrentInfo(TorrentDto torrentDto, bool overrideState = true);
         List<NameValue> GetTorrentInfo(TorrentDto torrentDto);
         List<TorrentFileItem> GetFileItems(TorrentDto torrentDto);
         List<PeerItem> GetPeerItems(TorrentDto torrentDto);
@@ -19,5 +20,7 @@ namespace WebTorrent.Domain.Wrappers
         void Stop(TorrentDto torrentDto);
         void Pause(TorrentDto torrentDto);
         void Delete(TorrentDto torrentDto);
+        string GetName(TorrentDto torrentDto);
+        event Action<TorrentDto> TorrentDownloadingCompleted;
     }
 }

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using MonoTorrent.Client;
 using MonoTorrent.Common;
 using WebTorrent.Domain.Services.Torrent;
@@ -11,6 +14,9 @@ using WebTorrent.Domain.Services.Torrent.Peers;
 using WebTorrent.Domain.Services.Torrent.Trackers;
 using WebTorrent.Domain.Services._Common.Entities;
 using WebTorrent.Domain.Wrappers;
+using TorrentState = MonoTorrent.Common.TorrentState;
+
+// ReSharper disable ConvertToLambdaExpression
 
 namespace WebTorrent.TorrentLib
 {
@@ -19,6 +25,13 @@ namespace WebTorrent.TorrentLib
         private readonly ClientEngine _clientEngine;
         private readonly string _savePath = Path.GetTempPath();
         private readonly Dictionary<int, TorrentManager> _idToManagersMapping = new Dictionary<int, TorrentManager>();
+        public event Action<TorrentDto> TorrentDownloadingCompleted;
+
+        protected virtual void OnTorrentDownloadingCompleted(TorrentDto obj)
+        {
+            Action<TorrentDto> handler = TorrentDownloadingCompleted;
+            if (handler != null) handler(obj);
+        }
 
         #region Public methods
 
@@ -34,17 +47,32 @@ namespace WebTorrent.TorrentLib
             var manager = new TorrentManager(torrent, _savePath, new TorrentSettings());
             _idToManagersMapping.Add(torrentDto.Id, manager);
             _clientEngine.Register(manager);
-            LoadTorrentInfo(torrentDto);
+            LoadTorrentInfo(torrentDto, false);
+            manager.TorrentStateChanged += (sender, args) =>
+            {
+                if (manager.State == TorrentState.Seeding)
+                {
+                    OnTorrentDownloadingCompleted(torrentDto);
+                }
+                Debug.WriteLine(string.Format("line={0}", manager.State.ToString()));
+            };
         }
 
-        public void LoadTorrentInfo(TorrentDto torrentDto)
+        public string GetName(TorrentDto torrentDto)
+        {
+            var torrent = Torrent.Load(torrentDto.Data);
+            return torrent.Name;
+        }
+
+        public void LoadTorrentInfo(TorrentDto torrentDto, bool overrideState = true)
         {
             if (!_idToManagersMapping.ContainsKey(torrentDto.Id))
                 return;
 
             var manager = _idToManagersMapping[torrentDto.Id];
             torrentDto.Created = manager.Torrent.CreationDate;
-            torrentDto.State = manager.State.ToDomainTorrentState();
+            if (overrideState)
+                torrentDto.State = manager.State.ToDomainTorrentState();
             torrentDto.DownloadingPercentage = (decimal)manager.Progress;
             torrentDto.Name = manager.Torrent.Name;
             torrentDto.Size = manager.Torrent.Size;
@@ -56,8 +84,18 @@ namespace WebTorrent.TorrentLib
                 return;
 
             var manager = _idToManagersMapping[torrentDto.Id];
-            _clientEngine.Unregister(manager);
-            _idToManagersMapping.Remove(torrentDto.Id);
+            manager.Stop();
+            while (true)
+            {
+                if (manager.State == TorrentState.Stopped)
+                {
+                    _clientEngine.Unregister(manager);
+                    _idToManagersMapping.Remove(torrentDto.Id);
+                    return;
+                }
+                Debug.WriteLine("while iteration");
+                Thread.Sleep(1000);
+            }
         }
 
         public void Start(TorrentDto torrentDto)

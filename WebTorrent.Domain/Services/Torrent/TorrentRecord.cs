@@ -10,5 +10,10 @@ namespace WebTorrent.Domain.Services.Torrent
         public virtual byte[] Data { get; set; }
         public virtual TorrentState State { get; set; }
         public virtual DateTime? Completed { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Id: {0}, Name: {1}, State: {2}, Completed: {3}", Id, Name, State, Completed);
+        }
     }
 }

@@ -88,7 +88,14 @@
                 $.extend($scope.torrents, items);
             }
 
-            $scope.torrents[selectedIndex].selected = true;
+            if ($scope.torrents.length == 0)
+                return;
+
+            try {
+                $scope.torrents[selectedIndex].selected = true;
+            } catch (e) {
+                debugger;
+            }
         };
 
         switch (window.location.pathname) {

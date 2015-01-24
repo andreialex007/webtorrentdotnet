@@ -8,30 +8,35 @@
         var self = {};
 
         self.getDownloading = function (success) {
+            console.log("getDownloading");
             $resource("/api/torrents/downloading").query({}, function (data) {
                 success($.map(data, function (x) { return new torrentItem(x); }));
             });
         }
 
         self.getChecking = function (success) {
+            console.log("getChecking");
             $resource("/api/torrents/checking").query({}, function (data) {
                 success($.map(data, function (x) { return new torrentItem(x); }));
             });
         }
 
         self.getPaused = function (success) {
+            console.log("getPaused");
             $resource("/api/torrents/paused").query({}, function (data) {
                 success($.map(data, function (x) { return new torrentItem(x); }));
             });
         }
 
         self.getCompleted = function (success) {
+            console.log("getCompleted");
             $resource("/api/torrents/completed").query({}, function (data) {
                 success($.map(data, function (x) { return new torrentItem(x); }));
             });
         }
 
         self.getAll = function (success) {
+            console.log("getAll");
             $resource("/api/torrents/all").query({}, function (data) {
                 success($.map(data, function (x) { return new torrentItem(x); }));
             });

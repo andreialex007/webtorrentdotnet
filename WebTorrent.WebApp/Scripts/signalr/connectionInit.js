@@ -5,6 +5,7 @@
     return function (updateListFunc, updateTorrentInfoFunc) {
         var self = {};
         var client = $.connection.AppHub.client;
+        $.connection.hub.stop();
         client.updateTorrents = function (data) {
             updateListFunc();
             updateTorrentInfoFunc();

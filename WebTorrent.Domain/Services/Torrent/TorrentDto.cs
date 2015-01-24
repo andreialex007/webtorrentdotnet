@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Common.Utils;
 
 namespace WebTorrent.Domain.Services.Torrent
@@ -72,5 +68,11 @@ namespace WebTorrent.Domain.Services.Torrent
         /// Дата изменения торрента
         /// </summary>
         public DateTime? Modified { get; set; }
+
+
+        public override string ToString()
+        {
+            return string.Format("Id: {0}, Name: {1}, Size: {2}, IsLoading: {3}, DownloadingPercentage: {4}, State: {5}, StateName: {6}", Id, Name, Size, IsLoading, DownloadingPercentage, State, StateName);
+        }
     }
 }

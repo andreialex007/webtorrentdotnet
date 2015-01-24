@@ -38,5 +38,4 @@
 
     angular.bootstrap(document, ['app']);
 
-    debugger;
 });

@@ -43,19 +43,19 @@ namespace WebTorrent.Domain.Services.Torrent
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    _torrentApi.AddTorrent(torrentDto);
-                    var userRecord = new TorrentRecord
+                    var torrentRecord = new TorrentRecord
                     {
-                        Id = torrentDto.Id,
-                        Name = torrentDto.Name,
+                        Name = _torrentApi.GetName(torrentDto),
                         Data = torrentDto.Data,
-                        Completed = torrentDto.Completed,
-                        Created = torrentDto.Created,
-                        Modified = torrentDto.Modified,
-                        State = torrentDto.State,
+                        Completed = null,
+                        Created = DateTime.Now,
+                        Modified = DateTime.Now,
+                        State = TorrentState.Paused,
                     };
-                    session.Save(userRecord);
+                    session.Save(torrentRecord);
                     transaction.Commit();
+                    torrentDto.Id = torrentRecord.Id;
+                    _torrentApi.AddTorrent(torrentDto);
                 }
             }
         }
@@ -196,6 +196,10 @@ namespace WebTorrent.Domain.Services.Torrent
                                  })
                     .SingleOrDefault();
 
+
+                if (torrent == null)
+                    return new TorrentFullInfo();
+
                 var torrentFullInfo = new TorrentFullInfo
                                       {
                                           FilesInfo = new TorrentInfoBlock<List<TorrentFileItem>>
@@ -236,7 +240,7 @@ namespace WebTorrent.Domain.Services.Torrent
                 using (var transaction = session.BeginTransaction())
                 {
 
-                    foreach (TorrentRecord record in torrents)
+                    foreach (var record in torrents)
                     {
                         var torrentDto = new TorrentDto
                                          {
@@ -244,8 +248,40 @@ namespace WebTorrent.Domain.Services.Torrent
                                              Data = record.Data
                                          };
                         _torrentApi.AddTorrent(torrentDto);
+                        _torrentApi.TorrentDownloadingCompleted += DownloadingCompleted;
                         session.Update(record);
                     }
+                    transaction.Commit();
+                }
+
+                torrents
+                    .Where(x => x.State == TorrentState.Completed 
+                        || x.State == TorrentState.Completed
+                        || x.State == TorrentState.Downloading
+                        || x.State == TorrentState.Checking
+                        )
+                    .ToList()
+                    .ForEach(record =>
+                             {
+                                 _torrentApi.Start(new TorrentDto
+                                                   {
+                                                       Id = record.Id,
+                                                       Data = record.Data
+                                                   });
+                             });
+
+            }
+        }
+
+        private void DownloadingCompleted(TorrentDto dto)
+        {
+            using (var session = OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    var torrent = session.Query<TorrentRecord>().SingleOrDefault(x => x.Id == dto.Id);
+                    torrent.State = TorrentState.Completed;
+                    session.Update(torrent);
                     transaction.Commit();
                 }
             }
