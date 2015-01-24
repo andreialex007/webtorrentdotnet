@@ -19,30 +19,54 @@ namespace WebTorrent.WebApp.Controllers
     [RoutePrefix("api/torrents")]
     public class TorrentsController : ApiControllerBase
     {
+        private const string CommandStart = "start";
+        private const string CommandStop = "stop";
+        private const string CommandPause = "pause";
+
         static TorrentsController()
         {
             TorrentInfoUpdater.Event = () =>
                                        {
-                                           GlobalHost.ConnectionManager.GetHubContext<AppHub>().Clients.All.myTestFunction();
+                                           GlobalHost.ConnectionManager.GetHubContext<AppHub>().Clients.All.updateTorrents();
                                        };
         }
 
         #region Read methods
 
-        [Route(@"")]
-        public IEnumerable<TorrentDto> Get()
+        [Route(@"command/{id:int}/{command}")]
+        [HttpGet]
+        public void Command(int id, string command)
         {
-            List<TorrentDto> torrentsList = TorrentEngine.Current.AllTorrents().ToList();
+            if (command == CommandStart)
+            {
+                TorrentEngine.Current.Start(id);
+            }
+            else if (command == CommandStop)
+            {
+                TorrentEngine.Current.Stop(id);
+            }
+            else if (command == CommandPause)
+            {
+                TorrentEngine.Current.Pause(id);
+            }
+        }
 
-
-            return torrentsList;
+        [Route(@"{id:int}")]
+        [HttpGet]
+        public TorrentFullInfo Get(int id)
+        {
+            var info = TorrentEngine.Current.GetTorrentInfoBlocks(id);
+            return info;
         }
 
         [Route(@"{state}")]
         public IEnumerable<TorrentDto> Get(string state)
         {
+            if (state == "all")
+                return TorrentEngine.Current.AllTorrents();
+
             var torrentState = (TorrentState)Enum.Parse(typeof(TorrentState), state.UppercaseFirst());
-            List<TorrentDto> torrents = TorrentEngine.Current.TorrentsWithState(torrentState);
+            var torrents = TorrentEngine.Current.TorrentsWithState(torrentState);
 
 
             Task.Run(() =>

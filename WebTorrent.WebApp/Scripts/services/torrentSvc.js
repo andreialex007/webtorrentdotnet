@@ -32,82 +32,51 @@
         }
 
         self.getAll = function (success) {
-            $resource("/api/torrents").query({}, function (data) {
+            $resource("/api/torrents/all").query({}, function (data) {
                 success($.map(data, function (x) { return new torrentItem(x); }));
             });
         };
+
+        self.getTorrent = function (id, success) {
+            var torrentResource = $resource('/api/torrents/:id');
+            torrentResource.get({ id: id }, success);
+        }
 
         self.deleteTorrent = function (id, success) {
             var torrentResource = $resource('/api/torrents/:id');
             torrentResource.delete({ id: id }, success);
         }
 
-        self.getTorrentData = function (id) {
+        self.startTorrent = function (id, success) {
+            var torrentResource = $resource('/api/torrents/command/:id/:command');
+            torrentResource.get({ id: id, command: "start" }, success);
+        }
+        self.stopTorrent = function (id, success) {
+            var torrentResource = $resource('/api/torrents/command/:id/:command');
+            torrentResource.get({ id: id, command: "stop" }, success);
+        }
+        self.pauseTorrent = function (id, success) {
+            var torrentResource = $resource('/api/torrents/command/:id/:command');
+            torrentResource.get({ id: id, command: "pause" }, success);
+        }
+
+        self.getTorrentData = function (id, success) {
             ///<summary>Получает данные  для вкладок о торренте</summary>
 
-            return [
-                torrentInfoTab({
-                    name: "Common",
-                    properties: {
-                        SavePath: {
-                            name: "Save path",
-                            value: "sdcard/torrent"
-                        }
-                    }
-                }),
-                torrentInfoTab({
-                    name: "Data",
-                    properties: {
-                        SavePath: {
-                            name: "Save path",
-                            value: "sdcard/torrent"
-                        }
-                    }
-                }),
-                torrentInfoTab({
-                    name: "Trackers",
-                    properties: [
-                        {
-                            name: "Save path",
-                            value: "sdcard/torrent"
-                        },
-                        {
-                            name: "Total size",
-                            value: "49.9 MB"
-                        },
-                        {
-                            name: "Pieces",
-                            value: "100 x 512 kb"
-                        },
-                        {
-                            name: "Avaliability",
-                            value: "100.0%"
-                        },
-                        {
-                            name: "Created on",
-                            value: "2011-02-25"
-                        },
-                        {
-                            name: "Hash",
-                            value: "sksldjflsdjflsdjlwioeuroiwjlkvmsdkl"
-                        },
-                        {
-                            name: "Created with",
-                            value: "mktorrent 1.0"
-                        },
-                        {
-                            name: "Comment",
-                            value: "Torrent created and tracked by"
-                        }
-                    ]
-                })
-            ];
+            var torrentResource = $resource('/api/torrents/:id');
+            torrentResource.get({ id: id }, function (data) {
+                var filesInfoTab = new torrentInfoTab(data.FilesInfo);
+                var peersInfoTab = new torrentInfoTab(data.PeersInfo);
+                var torrentInfoTabItem = new torrentInfoTab(data.TorrentInfo);
+                var trackersInfoTab = new torrentInfoTab(data.TrackersInfo);
+                success([
+                    filesInfoTab, peersInfoTab, torrentInfoTabItem, trackersInfoTab
+                ]);
+            });
         }
 
         return self;
     }
-
-    //    config.$inject = ['$routeProvider'];
 
     return torrentSvc;
 });

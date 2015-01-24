@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace WebTorrent.TorrentLib
 
         public TorrentApi()
         {
-            var settings = new EngineSettings {SavePath = _savePath};
+            var settings = new EngineSettings { SavePath = _savePath };
             _clientEngine = new ClientEngine(settings);
         }
 
@@ -44,9 +45,43 @@ namespace WebTorrent.TorrentLib
             var manager = _idToManagersMapping[torrentDto.Id];
             torrentDto.Created = manager.Torrent.CreationDate;
             torrentDto.State = manager.State.ToDomainTorrentState();
-            torrentDto.DownloadingPercentage = (decimal) manager.Progress;
+            torrentDto.DownloadingPercentage = (decimal)manager.Progress;
             torrentDto.Name = manager.Torrent.Name;
             torrentDto.Size = manager.Torrent.Size;
+        }
+
+        public void Delete(TorrentDto torrentDto)
+        {
+            if (!_idToManagersMapping.ContainsKey(torrentDto.Id))
+                return;
+
+            var manager = _idToManagersMapping[torrentDto.Id];
+            _clientEngine.Unregister(manager);
+            _idToManagersMapping.Remove(torrentDto.Id);
+        }
+
+        public void Start(TorrentDto torrentDto)
+        {
+            ChangeState(torrentDto, torrentManager => torrentManager.Start());
+        }
+
+        public void Stop(TorrentDto torrentDto)
+        {
+            ChangeState(torrentDto, torrentManager => torrentManager.Stop());
+        }
+
+        public void Pause(TorrentDto torrentDto)
+        {
+            ChangeState(torrentDto, torrentManager => torrentManager.Pause());
+        }
+
+        private void ChangeState(TorrentDto torrentDto, Action<TorrentManager> command)
+        {
+            if (!_idToManagersMapping.ContainsKey(torrentDto.Id))
+                return;
+            var manager = _idToManagersMapping[torrentDto.Id];
+            command(manager);
+            LoadTorrentInfo(torrentDto);
         }
 
         #endregion
@@ -81,7 +116,7 @@ namespace WebTorrent.TorrentLib
             var torrent = manager.Torrent;
             var fileItems = torrent.Files.Select(x => new TorrentFileItem
                                                       {
-                                                          Name = x.FullPath,
+                                                          Name = Path.GetFileName(x.FullPath),
                                                           Priority = x.Priority.ToString(),
                                                           Downloaded = x.BytesDownloaded,
                                                           Size = x.Length

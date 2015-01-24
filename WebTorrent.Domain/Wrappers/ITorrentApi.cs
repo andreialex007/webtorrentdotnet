@@ -15,5 +15,9 @@ namespace WebTorrent.Domain.Wrappers
         List<TorrentFileItem> GetFileItems(TorrentDto torrentDto);
         List<PeerItem> GetPeerItems(TorrentDto torrentDto);
         List<TrackerItem> GetTrackerItems(TorrentDto torrentDto);
+        void Start(TorrentDto torrentDto);
+        void Stop(TorrentDto torrentDto);
+        void Pause(TorrentDto torrentDto);
+        void Delete(TorrentDto torrentDto);
     }
 }

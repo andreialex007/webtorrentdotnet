@@ -16,7 +16,7 @@ namespace WebTorrent.Domain.Services
     {
         private static Timer _timer;
         private static Action _event;
-        private const int UpdateTimeInterval = 1000;
+        private const int UpdateTimeInterval = 5000;
 
         public static Action Event
         {

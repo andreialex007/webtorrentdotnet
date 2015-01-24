@@ -11,6 +11,10 @@
             console.log("getTorrentsFunction");
         }
 
+        $scope.updateTorrentInfoFunction = function () {
+            console.log("update torrent info");
+        }
+
         $scope.menuItems = [
             { name: "All", url: "/all", icon: "fa-cloud" },
             { name: "Downloading", url: "/downloading", icon: "fa-download" },
@@ -35,12 +39,25 @@
         };
 
         $scope.deleteTorrent = function () {
-            debugger;
             var selectedTorrent = $.grep($scope.torrents, function (x) { return x.selected == true; })[0];
             torrentSvc.deleteTorrent(selectedTorrent.Id, function () {
-                debugger;
             });
-            debugger;
+        }
+
+        $scope.pauseTorrent = function () {
+            var selectedTorrent = $.grep($scope.torrents, function (x) { return x.selected == true; })[0];
+            torrentSvc.pauseTorrent(selectedTorrent.Id, function () {
+            });
+        }
+        $scope.startTorrent = function () {
+            var selectedTorrent = $.grep($scope.torrents, function (x) { return x.selected == true; })[0];
+            torrentSvc.startTorrent(selectedTorrent.Id, function () {
+            });
+        }
+        $scope.stopTorrent = function () {
+            var selectedTorrent = $.grep($scope.torrents, function (x) { return x.selected == true; })[0];
+            torrentSvc.stopTorrent(selectedTorrent.Id, function () {
+            });
         }
 
         //#region active menu item
@@ -70,7 +87,7 @@
             } else {
                 $.extend($scope.torrents, items);
             }
-            
+
             $scope.torrents[selectedIndex].selected = true;
         };
 
@@ -104,7 +121,17 @@
                 throw new Exception("correct path not provided");
         };
 
-        $scope.infoTabs = torrentSvc.getTorrentData();
+        $scope.updateTorrentInfoFunction = function () {
+
+            var selectedItem = $.grep($scope.torrents, function (x) { return x.selected === true; })[0];
+
+            if (!selectedItem)
+                return;
+
+            torrentSvc.getTorrent(selectedItem.Id, function (data) {
+                $scope.infoTabs = data;
+            });
+        }
 
         $(window).trigger("resize");
         setTimeout(function () {
@@ -112,7 +139,7 @@
         }, 70);
 
         $scope.getTorrentsFunction();
-        connectionInit($scope.getTorrentsFunction);
+        connectionInit($scope.getTorrentsFunction, $scope.updateTorrentInfoFunction);
     }
 
     return mainCtrl;

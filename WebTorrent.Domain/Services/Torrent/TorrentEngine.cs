@@ -120,14 +120,64 @@ namespace WebTorrent.Domain.Services.Torrent
             }
         }
 
+        public void Start(int id)
+        {
+            ChangeState(id, dto => _torrentApi.Start(dto));
+        }
+
+        public void Stop(int id)
+        {
+            ChangeState(id, dto => _torrentApi.Stop(dto));
+        }
+
+        public void Pause(int id)
+        {
+            ChangeState(id, dto => _torrentApi.Pause(dto));
+        }
+
+        private void ChangeState(int id, Action<TorrentDto> command)
+        {
+            using (var session = OpenSession())
+            {
+                var torrent = session.Query<TorrentRecord>()
+                    .Where(x => x.Id == id)
+                    .Select(x => new TorrentDto
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                        State = x.State
+                    })
+                    .SingleOrDefault();
+
+                command(torrent);
+                var torrentRecord = session.Query<TorrentRecord>().SingleOrDefault(x => x.Id == id);
+                torrentRecord.State = torrent.State;
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.Update(torrentRecord);
+                    transaction.Commit();
+                }
+            }
+        }
+
         public void Delete(int id)
         {
             using (var session = OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
+                    var record = session.Query<TorrentRecord>()
+                       .Where(x => x.Id == id)
+                       .Select(x => x)
+                       .Single();
                     session.DeleteById<TorrentRecord>(id);
                     transaction.Commit();
+                    _torrentApi.Delete(new TorrentDto
+                                       {
+                                           Id = record.Id,
+                                           Name = record.Name,
+                                           State = record.State
+                                       });
                 }
             }
         }
@@ -185,10 +235,15 @@ namespace WebTorrent.Domain.Services.Torrent
 
                 using (var transaction = session.BeginTransaction())
                 {
-                    foreach (var record in torrents)
-                    {
-                        
 
+                    foreach (TorrentRecord record in torrents)
+                    {
+                        var torrentDto = new TorrentDto
+                                         {
+                                             Id = record.Id,
+                                             Data = record.Data
+                                         };
+                        _torrentApi.AddTorrent(torrentDto);
                         session.Update(record);
                     }
                     transaction.Commit();

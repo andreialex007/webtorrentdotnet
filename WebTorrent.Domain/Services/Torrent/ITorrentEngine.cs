@@ -10,5 +10,8 @@ namespace WebTorrent.Domain.Services.Torrent
         TorrentFullInfo GetTorrentInfoBlocks(int id);
         void Delete(int id);
         void Add(TorrentDto torrentDto);
+        void Start(int id);
+        void Stop(int id);
+        void Pause(int id);
     }
 }
