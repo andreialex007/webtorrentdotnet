@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
 using Common.Utils;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -59,7 +61,18 @@ namespace WebTorrent.WebApp
                     });
             });
 
+            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
             IoC.ResolvingExpression = ObjectFactory.GetInstance;
+        }
+    }
+
+    public class StructureMapControllerFactory : DefaultControllerFactory
+    {
+        protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
+        {
+            if (controllerType == null)
+                return null;
+            return (IController)ObjectFactory.GetInstance(controllerType);
         }
     }
 }

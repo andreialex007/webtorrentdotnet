@@ -2,17 +2,22 @@
         'Metronic/init',
         'Scripts/libs/angular-1.3.3/angular-modules',
         'Scripts/controllers/mainCtrl',
+        'Scripts/controllers/accountCtrl',
         "Scripts/services/torrentSvc",
         "Scripts/filters/reverse",
-        "Scripts/directives/onFileChanged"
+        "Scripts/directives/onFileChanged",
+        "Scripts/directives/ngVisible"
         
 ], function (
     init,
     modules,
     mainCtrl,
+    accountCtrl,
     torrentSvc,
     reverseFilter,
-    onFileChanged) {
+    onFileChanged,
+    ngVisible
+    ) {
     "use strict";
 
     window.
@@ -34,7 +39,9 @@
     app.filter('reverse', reverseFilter);
     app.factory('torrentSvc', torrentSvc);
     app.directive("onFileChanged", onFileChanged);
+    app.directive("ngVisible", ngVisible);
     app.controller('mainCtrl', mainCtrl);
+    app.controller('accountCtrl', accountCtrl);
 
     angular.bootstrap(document, ['app']);
 

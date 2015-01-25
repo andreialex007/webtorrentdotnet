@@ -193,10 +193,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\Extensions\Utils.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Common\ApiControllerBase.cs" />
     <Compile Include="Controllers\Common\AuthentificationExtensions.cs" />
     <Compile Include="Controllers\Common\ControllerBase.cs" />
-    <Compile Include="Controllers\Common\HomeController.cs" />
+    <Compile Include="Controllers\Common\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Controllers\Common\ExceptionControllerActionInvoker.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TorrentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2838,7 +2841,9 @@
     <Content Include="Metronic\init.js" />
     <Content Include="Scripts\app.config.js" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\controllers\accountCtrl.js" />
     <Content Include="Scripts\controllers\mainCtrl.js" />
+    <Content Include="Scripts\directives\ngVisible.js" />
     <Content Include="Scripts\directives\onFileChanged.js" />
     <Content Include="Scripts\filters\reverse.js" />
     <Content Include="Scripts\libs\angular-1.3.3\angular-animate.js" />
@@ -5532,6 +5537,10 @@
       <Project>{5c2842e0-06a0-4331-8629-f5146100f319}</Project>
       <Name>WebTorrent.TorrentLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\IndexUnauthorized.cshtml" />
+    <Content Include="Views\Shared\_LayoutUnauthorized.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -6,7 +6,12 @@ using System.Web.Mvc;
 
 namespace WebTorrent.WebApp.Controllers.Common
 {
+    [CustomAuthorizeAttribute]
     public class ControllerBase : Controller
     {
+        public ControllerBase()
+        {
+            ActionInvoker = new ExceptionControllerActionInvoker();
+        }
     }
 }
