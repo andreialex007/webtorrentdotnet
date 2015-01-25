@@ -1,9 +1,9 @@
 ﻿<table style="margin-bottom: 0px;" class="table table-striped table-bordered table-hover dataTable no-footer">
 
-    <tr ng-click="setActive(item)" class="{{ item.selected  ? 'selected' : '' }}" ng-repeat="item in torrents">
-        <td style="width: 41px;" class="checkbox-td">
-            <input type="checkbox" />
-        </td>
+    <tr ng-click="setActive(item)" class="{{ item.selected  ? 'selected' : '' }}" ng-repeat="item in filteredTorrents()">
+<!--        <td style="width: 41px;" class="checkbox-td">-->
+<!--            <input ng-model="item.checked" type="checkbox" />-->
+<!--        </td>-->
         <td>
             <div class='torrent-name'>
                 <h4 ng-bind="item.Name"></h4>
@@ -21,14 +21,18 @@
             </div>
             <div>
                 <span>{{ item.StateName }} - {{ item.DownloadingPercentage }}%</span>
-                <span style="float:right;">Peers - 35/87</span>
-            </div>
-            <div style="text-align: right;">
-                <span>Ratio: 0.000</span>
-                <span>Size: {{ item.SizeString }}</span>
-                <span>Uploaded: 0 B</span>
-                <span>Up: 17 b/s</span>
-                <span>Down: 7 b/s</span>
+                <span class="right-info-item">
+                    <strong>Size:</strong>
+                    <span>{{ item.SizeString }}</span>
+                </span>
+                <span class="right-info-item">
+                    <strong>Created on:</strong>
+                    <span>{{ item.CreatedOn }}</span>
+                </span>
+                <span class="right-info-item">
+                    <strong>Created by:</strong>
+                    <span>{{ item.CreatedBy }}</span>
+                </span>
             </div>
         </td>
     </tr>

@@ -332,7 +332,7 @@ var Metronic = function () {
             handleOnResize(); // set and handle responsive    
             
             //UI Component handlers            
-            handleUniform(); // hanfle custom radio & checkboxes
+           // handleUniform(); // hanfle custom radio & checkboxes
             handleBootstrapSwitch(); // handle bootstrap switch plugin
             handleScrollers(); // handles slim scrolling contents 
             handleFancybox() // handle fancy box

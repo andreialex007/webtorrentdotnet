@@ -7,6 +7,12 @@
 
         $scope.torrents = [];
 
+        $scope.searchText = "";
+
+        $scope.filteredTorrents = function () {
+            return $.grep($scope.torrents, function (x) { return x.Name.toLowerCase().indexOf($scope.searchText.toLowerCase()) > -1; });
+        }
+
         $scope.getTorrentsFunction = function () {
             console.log("getTorrentsFunction");
         }
@@ -73,6 +79,10 @@
             return item.url == window.location.pathname;
         };
 
+        $scope.anyChecked = function() {
+            return $.grep($scope.torrents, function(x) { return x.checked === true; }).length > 0;
+        }
+
         //#endregion
 
         var successFunc = function (items) {
@@ -85,7 +95,12 @@
             if ($scope.torrents.length != items.length) {
                 $scope.torrents = items;
             } else {
+                var checkedItems = $.map($.grep($scope.torrents, function (x) { return x.checked === true; }), function (x) { return x.Id; });
                 $.extend($scope.torrents, items);
+                $(checkedItems).each(function (index, element) {
+                    var found = $.grep($scope.torrents, function (x) { return x.Id == element; })[0];
+                    found.checked = true;
+                });
             }
 
             if ($scope.torrents.length == 0)

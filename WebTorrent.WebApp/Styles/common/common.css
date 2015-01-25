@@ -139,4 +139,8 @@
 .torrent-info-wrapper > div {
   height: 100%;
 }
+.right-info-item {
+  float: right;
+  margin-right: 5px;
+}
 /*# sourceMappingURL=common.css.map */

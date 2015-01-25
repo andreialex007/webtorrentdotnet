@@ -7,9 +7,9 @@
             <div class="menu-toggler sidebar-toggler hide">
             </div>
         </div>
-        <form class="search-form search-form-expanded" action="extra_search.html" method="GET">
+        <form style="width: 400px" class="search-form search-form-expanded" action="extra_search.html" method="GET">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." name="query">
+                <input type="text" ng-model="searchText" class="form-control" placeholder="Search torrents..." name="query">
                 <span class="input-group-btn">
                     <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
                 </span>
@@ -24,7 +24,7 @@
                 <input style="display: none;" type="file" id="torrent-file-upload-input" />
                 <button ng-click="pauseTorrent()" style="margin-top:5px" class="btn btn-link "><i class="fa fa-pause font-yellow-casablanca"></i></button>
                 <button ng-click="startTorrent()" style="margin-top:5px" class="btn btn-link "><i class="fa fa-play font-blue-steel"></i></button>
-                <button ng-click="stopTorrent()" style="margin-top:5px" class="btn btn-link "><i class="fa fa-stop font-grey-gallery"></i></button>
+                <!--                <button ng-click="stopTorrent()" style="margin-top:5px" class="btn btn-link "><i class="fa fa-stop font-grey-gallery"></i></button>-->
                 <button ng-click="deleteTorrent()" style="margin-top:5px" class="btn btn-link "><i class="fa fa-remove font-red-thunderbird"></i></button>
             </div>
 

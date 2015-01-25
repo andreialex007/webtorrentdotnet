@@ -55,9 +55,19 @@ namespace WebTorrent.Domain.Services.Torrent
         }
 
         /// <summary>
-        /// Дата создания
+        /// Дата создания записи о торренте
         /// </summary>
         public DateTime? Created { get; set; }
+
+        /// <summary>
+        /// Дата создания торрента
+        /// </summary>
+        public DateTime CreatedOn { get; set; }
+
+        /// <summary>
+        /// Кем создн торрент
+        /// </summary>
+        public string CreatedBy { get; set; }
 
         /// <summary>
         /// Дата завершения загрузки

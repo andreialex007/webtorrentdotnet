@@ -76,6 +76,8 @@ namespace WebTorrent.TorrentLib
             torrentDto.DownloadingPercentage = (decimal)manager.Progress;
             torrentDto.Name = manager.Torrent.Name;
             torrentDto.Size = manager.Torrent.Size;
+            torrentDto.CreatedOn = manager.Torrent.CreationDate;
+            torrentDto.CreatedBy = manager.Torrent.CreatedBy;
         }
 
         public void Delete(TorrentDto torrentDto)

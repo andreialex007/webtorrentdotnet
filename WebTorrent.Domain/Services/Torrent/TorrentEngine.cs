@@ -255,7 +255,7 @@ namespace WebTorrent.Domain.Services.Torrent
                 }
 
                 torrents
-                    .Where(x => x.State == TorrentState.Completed 
+                    .Where(x => x.State == TorrentState.Completed
                         || x.State == TorrentState.Completed
                         || x.State == TorrentState.Downloading
                         || x.State == TorrentState.Checking
