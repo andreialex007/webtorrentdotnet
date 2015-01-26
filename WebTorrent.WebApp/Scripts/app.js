@@ -45,4 +45,6 @@
 
     angular.bootstrap(document, ['app']);
 
+    $(".login-button").click();
+
 });
