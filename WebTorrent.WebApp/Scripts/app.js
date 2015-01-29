@@ -2,6 +2,7 @@
         'Metronic/init',
         'Scripts/libs/angular-1.3.3/angular-modules',
         'Scripts/controllers/mainCtrl',
+        'Scripts/controllers/usersCtrl',
         'Scripts/controllers/accountCtrl',
         "Scripts/services/torrentSvc",
         "Scripts/filters/reverse",
@@ -12,6 +13,7 @@
     init,
     modules,
     mainCtrl,
+    usersCtrl,
     accountCtrl,
     torrentSvc,
     reverseFilter,
@@ -32,6 +34,7 @@
             .when("/checking", mainCtrlConfig)
             .when("/paused", mainCtrlConfig)
             .when("/completed", mainCtrlConfig)
+            .when("/users", { templateUrl: 'Templates/users.html', controller: 'usersCtrl' })
             .otherwise({ redirectTo: '/all' });
 
     });
@@ -41,6 +44,7 @@
     app.directive("onFileChanged", onFileChanged);
     app.directive("ngVisible", ngVisible);
     app.controller('mainCtrl', mainCtrl);
+    app.controller('usersCtrl', usersCtrl);
     app.controller('accountCtrl', accountCtrl);
 
     angular.bootstrap(document, ['app']);

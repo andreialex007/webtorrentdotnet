@@ -1,9 +1,15 @@
 ﻿define([
-    "Scripts/signalr/connectionInit"
-], function (connectionInit) {
+    "Scripts/signalr/connectionInit",
+    "Scripts/controllers/baseCtrl"
+], function (
+    connectionInit,
+    baseCtrl) {
     'use strict';
 
     function mainCtrl($scope, $routeParams, torrentSvc) {
+
+        //Наследуемся от базового
+        baseCtrl.call(this, $scope, $routeParams);
 
         $scope.torrents = [];
 
@@ -21,13 +27,7 @@
             console.log("update torrent info");
         }
 
-        $scope.menuItems = [
-            { name: "All", url: "/all", icon: "fa-cloud" },
-            { name: "Downloading", url: "/downloading", icon: "fa-download" },
-            { name: "Completed", url: "/completed", icon: "fa-thumbs-up" },
-            { name: "Checking", url: "/checking", icon: "fa-check-square" },
-            { name: "Paused", url: "/paused", icon: "fa-pause" }
-        ];
+       
 
         $scope.fileChanged = function (event) {
 
@@ -79,8 +79,8 @@
             return item.url == window.location.pathname;
         };
 
-        $scope.anyChecked = function() {
-            return $.grep($scope.torrents, function(x) { return x.checked === true; }).length > 0;
+        $scope.anyChecked = function () {
+            return $.grep($scope.torrents, function (x) { return x.checked === true; }).length > 0;
         }
 
         //#endregion

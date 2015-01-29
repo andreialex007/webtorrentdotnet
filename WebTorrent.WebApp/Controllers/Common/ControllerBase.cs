@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebTorrent.WebApp.Controllers.Common
 {
-    [CustomAuthorizeAttribute]
+//    [CustomAuthorizeAttribute]
     public class ControllerBase : Controller
     {
         public ControllerBase()

@@ -2841,6 +2841,7 @@
     <Content Include="Metronic\init.js" />
     <Content Include="Scripts\app.config.js" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\controllers\baseCtrl.js" />
     <Content Include="Scripts\controllers\usersCtrl.js" />
     <Content Include="Scripts\controllers\accountCtrl.js" />
     <Content Include="Scripts\controllers\mainCtrl.js" />
@@ -5047,6 +5048,7 @@
     <Content Include="Scripts\libs\r.js" />
     <Content Include="Scripts\libs\require.js" />
     <Content Include="Scripts\models\torrentInfoTab.js" />
+    <Content Include="Scripts\models\userItem.js" />
     <Content Include="Scripts\models\torrentItem.js" />
     <Content Include="Scripts\services\torrentSvc.js" />
     <Content Include="Scripts\signalr\connectionInit.js" />
@@ -5054,6 +5056,7 @@
     <Content Include="Templates\default.html" />
     <Content Include="Templates\torrentInfo.html" />
     <Content Include="Templates\torrentsList.html" />
+    <Content Include="Templates\users.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
