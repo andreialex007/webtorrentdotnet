@@ -1,4 +1,6 @@
-﻿namespace WebTorrent.Domain.Services.User
+﻿using System.Collections.Generic;
+
+namespace WebTorrent.Domain.Services.User
 {
     public interface IUserService
     {
@@ -7,5 +9,7 @@
         void Add(UserDto userDto);
         void Update(UserDto userDto);
         void Delete(int id);
+        List<UserDto> All();
+        UserDto GetUserById(int id);
     }
 }

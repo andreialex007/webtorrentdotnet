@@ -7,11 +7,11 @@
             <div class="menu-toggler sidebar-toggler hide">
             </div>
         </div>
-        
+
         <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
         </a>
         <div class="top-menu">
-            
+
             <button style="margin-top:5px" type="submit" class="btn btn-circle blue-hoki"><i class="fa fa-cogs"></i> Settings</button>
             <ul class="nav navbar-nav pull-right">
 
@@ -72,9 +72,13 @@
     <!-- END SIDEBAR -->
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
+
         <div class="page-content">
             <div class="items-table-container">
                 <div>
+                    <a ng-click="addUser()" class="label label-danger">
+                        Add user
+                    </a>
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
@@ -85,90 +89,37 @@
                                     First Name
                                 </th>
                                 <th>
-                                    Last Name
+                                    Email
                                 </th>
                                 <th>
-                                    Username
+                                    Role
                                 </th>
                                 <th>
-                                    Status
+                                    Actions
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr ng-repeat="user in users">
                                 <td>
-                                    1
+                                    {{user.id}}
                                 </td>
                                 <td>
-                                    Mark
+                                    {{user.name}}
                                 </td>
                                 <td>
-                                    Otto
+                                    {{user.email}}
                                 </td>
                                 <td>
-                                    makr124
+                                    {{user.role}}
                                 </td>
                                 <td>
-                                    <span class="label label-sm label-success">
-                                        Approved
+                                    <span ng-click="user.edit()" class="label label-sm label-success">
+                                        Edit
                                     </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    Jacob
-                                </td>
-                                <td>
-                                    Nilson
-                                </td>
-                                <td>
-                                    jac123
-                                </td>
-                                <td>
-                                    <span class="label label-sm label-info">
-                                        Pending
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    Larry
-                                </td>
-                                <td>
-                                    Cooper
-                                </td>
-                                <td>
-                                    lar
-                                </td>
-                                <td>
-                                    <span class="label label-sm label-warning">
-                                        Suspended
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    4
-                                </td>
-                                <td>
-                                    Sandy
-                                </td>
-                                <td>
-                                    Lim
-                                </td>
-                                <td>
-                                    sanlim
-                                </td>
-                                <td>
-                                    <span class="label label-sm label-danger">
-                                        Blocked
+                                    &nbsp;
+                                    <span ng-click="user.delete()" class="label label-sm label-info">
+                                        Delete
                                     </span>
                                 </td>
                             </tr>
@@ -177,6 +128,74 @@
                 </div>
             </div>
         </div>
+
+
+        <div ng-show="editUserModal.visible">
+            <div class="edit-user-modal-overlay">
+
+            </div>
+            <div class="modal-content edit-user-modal">
+                <div class="modal-header">
+                    <button ng-click="editUserModal.hide()" type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Редактирование пользователя</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-body">
+                        <div ng-show="editUserModal.isValid()" class="alert alert-danger">
+                            <h4 style="margin-bottom: 0;">Обнаружены ошибки заполнения формы</h4>
+                            <span class="user-validation-errors">{{editUserModal.errorsString}}</span>
+                            <br/>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">User name</label>
+                                    <div class="col-md-9">
+                                        <input ng-model="editUserModal.userName" type="text" class="form-control" placeholder="User name (required)">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">&nbsp;</div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Email</label>
+                                    <div class="col-md-9">
+                                        <input ng-model="editUserModal.email" type="text" class="form-control" placeholder="Email (required)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">&nbsp;</div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Password</label>
+                                    <div class="col-md-9">
+                                        <input ng-model="editUserModal.password" type="password" class="form-control" placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">&nbsp;</div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Role</label>
+                                    <div  class="col-md-9">
+                                        <select class="form-control" ng-model="editUserModal.selectedRole" ng-options="item as item.name for item in editUserModal.avaliableRoles"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button ng-click="editUserModal.hide()" type="button" class="btn default" data-dismiss="modal">Закрыть</button>
+                    <button ng-click="editUserModal.save()" type="button" class="btn blue">Сохранить</button>
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="page-footer">
             <div class="page-footer-inner">
                 2014 &copy; Metronic by keenthemes.

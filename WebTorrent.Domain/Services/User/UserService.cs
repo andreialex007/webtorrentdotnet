@@ -74,6 +74,45 @@ namespace WebTorrent.Domain.Services.User
             }
         }
 
+        public UserDto GetUserById(int id)
+        {
+            using (var session = OpenSession())
+            {
+                var userDto = session.Query<UserRecord>()
+                    .Where(x => x.Id == id)
+                    .OrderBy(x => x.Id)
+                    .Select(x => new UserDto
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                        Email = x.Email,
+                        Role = x.Role,
+                        Password = x.Password
+                    })
+                    .SingleOrDefault();
+
+                return userDto;
+            }
+        } 
+
+        public List<UserDto> All()
+        {
+            using (var session = OpenSession())
+            {
+                var users = session.Query<UserRecord>()
+                    .OrderBy(x => x.Id)
+                    .Select(x => new UserDto
+                                 {
+                                     Id = x.Id,
+                                     Name = x.Name,
+                                     Email = x.Email,
+                                     Role = x.Role
+                                 })
+                                 .ToList();
+                return users;
+            }
+        }
+
         public UserDto Login(string name, string password)
         {
             using (var session = OpenSession())
@@ -101,6 +140,7 @@ namespace WebTorrent.Domain.Services.User
             using (var session = OpenSession())
             {
                 var userDto = session.Query<UserRecord>()
+                    .Where(x => x.Name.ToLower() == userName)
                     .OrderBy(x => x.Id)
                     .Select(x => new UserDto
                                  {

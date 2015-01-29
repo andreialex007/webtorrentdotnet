@@ -22,6 +22,7 @@ namespace WebTorrent.WebApp.Controllers
         private const string CommandStart = "start";
         private const string CommandStop = "stop";
         private const string CommandPause = "pause";
+        private const int UpdatePause = 5000;
 
         static TorrentsController()
         {
@@ -71,10 +72,9 @@ namespace WebTorrent.WebApp.Controllers
 
             Task.Run(() =>
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(UpdatePause);
                 GlobalHost.ConnectionManager.GetHubContext<AppHub>().Clients.All.myTestFunction();
             });
-
 
             return torrents;
         }
@@ -84,6 +84,7 @@ namespace WebTorrent.WebApp.Controllers
         #region Write methods
 
         [Route(@"upload")]
+        [HttpPost]
         public void Post()
         {
             HttpPostedFile file = HttpContext.Current.Request.PostedFile();
@@ -94,11 +95,13 @@ namespace WebTorrent.WebApp.Controllers
                                       });
         }
 
+        [HttpPut]
         public void Put(int id, [FromBody] string value)
         {
         }
 
         [Route(@"{id:int}")]
+        [HttpDelete]
         public void Delete(int id)
         {
             TorrentEngine.Current.Delete(id);

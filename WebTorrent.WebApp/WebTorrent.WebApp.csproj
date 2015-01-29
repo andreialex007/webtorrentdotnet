@@ -201,6 +201,7 @@
     <Compile Include="Controllers\Common\ExceptionControllerActionInvoker.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TorrentsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -5048,6 +5049,7 @@
     <Content Include="Scripts\libs\r.js" />
     <Content Include="Scripts\libs\require.js" />
     <Content Include="Scripts\models\torrentInfoTab.js" />
+    <Content Include="Scripts\models\editUserModal.js" />
     <Content Include="Scripts\models\userItem.js" />
     <Content Include="Scripts\models\torrentItem.js" />
     <Content Include="Scripts\services\torrentSvc.js" />

@@ -143,4 +143,25 @@
   float: right;
   margin-right: 5px;
 }
+.edit-user-modal {
+  position: fixed !important;
+  top: 119px !important;
+  width: 573px !important;
+  left: 50% !important;
+  margin-left: -265px !important;
+  z-index: 99999;
+}
+.edit-user-modal-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 9999;
+}
+.user-validation-errors {
+  white-space: pre-line;
+}
 /*# sourceMappingURL=common.css.map */
