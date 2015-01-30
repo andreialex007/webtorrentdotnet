@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using Common.Utils;
 using WebTorrent.Domain.Services.User;
 using WebTorrent.WebApp.Controllers.Common;
 
@@ -10,9 +11,9 @@ namespace WebTorrent.WebApp.Controllers
     {
         private readonly IUserService _userService;
 
-        public UsersController(IUserService userService)
+        public UsersController()
         {
-            _userService = userService;
+            _userService = IoC.Resolve<IUserService>();
         }
 
         [Route(@"")]

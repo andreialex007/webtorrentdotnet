@@ -10,6 +10,11 @@ namespace WebTorrent.Domain.Services.User
 {
     public class UserService : ServiceBase, IUserService
     {
+        public UserService()
+        {
+            
+        }
+
         #region Public methods
 
         public List<UserDto> GetAllUsers()

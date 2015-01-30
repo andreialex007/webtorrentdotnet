@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
-using System.Web.Routing;
 using Common.Utils;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -12,6 +12,7 @@ using StructureMap.Pipeline;
 using StructureMap.Web.Pipeline;
 using WebTorrent.Data;
 using WebTorrent.Domain.Services.Torrent;
+using WebTorrent.Domain.Services.User;
 using WebTorrent.Domain.Services._Common;
 using WebTorrent.TorrentLib;
 
@@ -34,8 +35,12 @@ namespace WebTorrent.WebApp
                                                                 return torrentEngine;
                                                             };
 
+
+
             NHibertnateSession.FactoryCreator = () =>
                                                 {
+
+
                                                     var dbConfig = MsSqlConfiguration.MsSql2012
                                                         .ConnectionString(@"Data Source=ANDREI-PC\MSSQLSERVER2012;Initial Catalog=TorrentDb;Integrated Security=True")
                                                         .ShowSql();
@@ -49,30 +54,23 @@ namespace WebTorrent.WebApp
                                                     return sessionFactory;
                                                 };
 
-            ObjectFactory.Configure(config =>
-            {
-                config.Scan(
-                    x =>
-                    {
-                        x.AssembliesFromPath(assembliesPath);
-                        x.WithDefaultConventions()
-                            .OnAddedPluginTypes(t => t.LifecycleIs(Lifecycles.Get<HttpContextLifecycle>()));
+            // GlobalConfiguration.Configuration.DependencyResolver = new WebApiDependcyResolver();
 
-                    });
-            });
+            ObjectFactory.Configure(config =>
+                                    {
+                                        config.For<IUserService>().Use<UserService>();
+                                        config.Scan(
+                                            x =>
+                                            {
+                                                x.AssembliesFromPath(assembliesPath);
+                                                x.WithDefaultConventions()
+                                                    .OnAddedPluginTypes(t => t.LifecycleIs(Lifecycles.Get<HttpContextLifecycle>()));
+
+                                            });
+                                    });
 
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
             IoC.ResolvingExpression = ObjectFactory.GetInstance;
-        }
-    }
-
-    public class StructureMapControllerFactory : DefaultControllerFactory
-    {
-        protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
-        {
-            if (controllerType == null)
-                return null;
-            return (IController)ObjectFactory.GetInstance(controllerType);
         }
     }
 }
