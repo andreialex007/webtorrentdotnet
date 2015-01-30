@@ -5054,6 +5054,7 @@
     <Content Include="Scripts\models\editUserModal.js" />
     <Content Include="Scripts\models\userItem.js" />
     <Content Include="Scripts\models\torrentItem.js" />
+    <Content Include="Scripts\services\userSvc.js" />
     <Content Include="Scripts\services\torrentSvc.js" />
     <Content Include="Scripts\signalr\connectionInit.js" />
     <Content Include="Styles\common\common.css" />

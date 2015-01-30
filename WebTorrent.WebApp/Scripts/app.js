@@ -5,10 +5,10 @@
         'Scripts/controllers/usersCtrl',
         'Scripts/controllers/accountCtrl',
         "Scripts/services/torrentSvc",
+        "Scripts/services/userSvc",
         "Scripts/filters/reverse",
         "Scripts/directives/onFileChanged",
         "Scripts/directives/ngVisible"
-        
 ], function (
     init,
     modules,
@@ -16,6 +16,7 @@
     usersCtrl,
     accountCtrl,
     torrentSvc,
+    userSvc,
     reverseFilter,
     onFileChanged,
     ngVisible
@@ -36,11 +37,11 @@
             .when("/completed", mainCtrlConfig)
             .when("/users", { templateUrl: 'Templates/users.html', controller: 'usersCtrl' })
             .otherwise({ redirectTo: '/all' });
-
     });
 
     app.filter('reverse', reverseFilter);
     app.factory('torrentSvc', torrentSvc);
+    app.factory('userSvc', userSvc);
     app.directive("onFileChanged", onFileChanged);
     app.directive("ngVisible", ngVisible);
     app.controller('mainCtrl', mainCtrl);

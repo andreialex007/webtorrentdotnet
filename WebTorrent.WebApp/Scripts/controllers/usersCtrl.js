@@ -1,41 +1,48 @@
 ﻿define([
      "Scripts/controllers/baseCtrl",
      "Scripts/models/userItem",
-     "Scripts/models/editUserModal"
+     "Scripts/models/editUserModal",
+     "Scripts/services/userSvc"
 ], function (
     baseCtrl,
     userItem,
-    editUserModal
+    editUserModal,
+    userSvc
     ) {
     'use strict';
 
-    return function ($scope, $routeParams, torrentSvc) {
+    return function ($scope, $routeParams, userSvc) {
 
         //Наследуемся от базового
         baseCtrl.call(this, $scope, $routeParams);
 
-        $scope.users = [
-            new userItem({
-                id: "1",
-                name: "name",
-                email: "email",
-                role: "role"
-            }),
-            new userItem({
-                id: "1",
-                name: "name",
-                email: "email",
-                role: "role"
-            }),
-            new userItem({
-                id: "1",
-                name: "name",
-                email: "email",
-                role: "role"
-            })
-        ];
+        userSvc.getUsers(function (data) {
+            $scope.users = data;
+        });
+
+//        $scope.users = [
+//            new userItem({
+//                id: "1",
+//                name: "name",
+//                email: "email",
+//                role: "role"
+//            }),
+//            new userItem({
+//                id: "1",
+//                name: "name",
+//                email: "email",
+//                role: "role"
+//            }),
+//            new userItem({
+//                id: "1",
+//                name: "name",
+//                email: "email",
+//                role: "role"
+//            })
+//        ];
+
         $scope.editUserModal = new editUserModal();
-        $scope.editUserModal.onSaved = function() {
+        $scope.editUserModal.onSaved = function () {
             $scope.users.push(new userItem({
                 id: $scope.editUserModal.userId,
                 name: $scope.editUserModal.userName,

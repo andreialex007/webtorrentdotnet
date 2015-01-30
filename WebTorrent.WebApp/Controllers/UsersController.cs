@@ -25,7 +25,7 @@ namespace WebTorrent.WebApp.Controllers
 
         [Route(@"{id:int}")]
         [HttpGet]
-        public UserDto List(int id)
+        public UserDto Item(int id)
         {
             return _userService.GetUserById(id);
         }

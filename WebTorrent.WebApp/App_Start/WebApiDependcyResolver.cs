@@ -39,7 +39,7 @@ namespace WebTorrent.WebApp
 
         public void Dispose()
         {
-            ObjectFactory.Container.Dispose();
+           
         }
     }
 }
