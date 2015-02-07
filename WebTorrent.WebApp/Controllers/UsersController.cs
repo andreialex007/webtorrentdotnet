@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using Common.Utils;
+using Microsoft.Ajax.Utilities;
 using WebTorrent.Domain.Services.User;
 using WebTorrent.WebApp.Controllers.Common;
 
@@ -32,16 +33,24 @@ namespace WebTorrent.WebApp.Controllers
 
         [Route(@"add")]
         [HttpPost]
-        public void Add()
+        public void Add(UserDto userDto)
         {
 
         }
 
         [Route(@"update")]
         [HttpPost]
-        public void Update()
+        public UserDto Update(UserDto userDto)
         {
-
+            if (userDto.Id == 0)
+            {
+                _userService.Add(userDto);
+            }
+            else
+            {
+                _userService.Update(userDto);
+            }
+            return userDto;
         }
 
         [Route(@"{id:int}")]

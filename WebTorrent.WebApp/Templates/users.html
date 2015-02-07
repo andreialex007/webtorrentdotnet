@@ -102,19 +102,19 @@
                         <tbody>
                             <tr ng-repeat="user in users">
                                 <td>
-                                    {{user.id}}
+                                    {{user.Id}}
                                 </td>
                                 <td>
-                                    {{user.name}}
+                                    {{user.Name}}
                                 </td>
                                 <td>
-                                    {{user.email}}
+                                    {{user.Email}}
                                 </td>
                                 <td>
-                                    {{user.role}}
+                                    {{user.Role}}
                                 </td>
                                 <td>
-                                    <span ng-click="user.edit()" class="label label-sm label-success">
+                                    <span ng-click="editUser(user)" class="label label-sm label-success">
                                         Edit
                                     </span>
                                     &nbsp;

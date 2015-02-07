@@ -16,7 +16,9 @@ namespace WebTorrent.Data
             Table("Users");
 
             Id(x => x.Id)
-                .Column("Id");
+                .Column("Id")
+                .GeneratedBy
+                .Identity();
 
             Map(x => x.Name)
                 .Column("Name");

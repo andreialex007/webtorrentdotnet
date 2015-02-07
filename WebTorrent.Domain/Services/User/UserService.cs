@@ -54,6 +54,7 @@ namespace WebTorrent.Domain.Services.User
 
                     session.Save(userRecord);
                     transaction.Commit();
+                    userDto.Id = userRecord.Id;
                 }
             }
         }

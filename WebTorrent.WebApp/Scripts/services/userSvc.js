@@ -24,18 +24,22 @@
         }
 
         self.saveUser = function (userData, success) {
+            ///<summary>Сохраняет пользователя</summary>
+            ///<param name="userData">Данные пользователя для сохранения</param>
+            ///<param name="success">Коллбэк после сохранения</param>
+
             var User = $resource('/api/users/update');
             var user = new User();
             $.extend(user, userData);
-            user.save(success);
+            user.$save(success);
         }
 
-        self.saveUser = function (userData, success) {
-            var User = $resource('/api/users/add');
-            var user = new User();
-            $.extend(user, userData);
-            user.save(success);
-        }
+//        self.addUser = function (userData, success) {
+//            var User = $resource('/api/users/add');
+//            var user = new User();
+//            $.extend(user, userData);
+//            user.save(success);
+//        }
         return self;
     }
 

@@ -42,7 +42,7 @@ namespace WebTorrent.WebApp
 
 
                                                     var dbConfig = MsSqlConfiguration.MsSql2012
-                                                        .ConnectionString(@"Data Source=ANDREI-PC\MSSQLSERVER2012;Initial Catalog=TorrentDb;Integrated Security=True")
+                                                        .ConnectionString(@"Data Source=NOTEBOOK-PC;Initial Catalog=TorrentDb;Integrated Security=True")
                                                         .ShowSql();
 
                                                     var sessionFactory = Fluently
