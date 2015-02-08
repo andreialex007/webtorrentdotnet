@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebTorrent.Domain.Services.Torrent;
+using MonoTorrent.Common;
 using MonoTorrentState = MonoTorrent.Common.TorrentState;
+using TorrentState = WebTorrent.Domain.Services.Torrent.TorrentState;
 
 namespace WebTorrent.TorrentLib
 {
@@ -26,6 +28,11 @@ namespace WebTorrent.TorrentLib
             return TorrentStatesDictionary.ContainsKey(torrentState)
                 ? TorrentStatesDictionary[torrentState]
                 : TorrentState.Unknown;
+        }
+
+        public static string SavePath(this Torrent torrent)
+        {
+            return Directory.CreateDirectory(Path.Combine(TorrentApi.SavePath, torrent.InfoHash.ToString())).FullName;
         }
     }
 }

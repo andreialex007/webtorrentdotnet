@@ -12,7 +12,7 @@ namespace WebTorrent.Domain.Services.User
     {
         public UserService()
         {
-            
+
         }
 
         #region Public methods
@@ -49,8 +49,11 @@ namespace WebTorrent.Domain.Services.User
                                          Name = userDto.Name,
                                          Email = userDto.Email,
                                          Role = userDto.Role,
-                                         Password = userDto.Password
+                                         Password = PasswordHasher.HashPassword(userDto.Password)
                                      };
+
+                    var errors = userRecord.GetValidationErrors();
+                    errors.ThrowIfHasErrors();
 
                     session.Save(userRecord);
                     transaction.Commit();
@@ -65,6 +68,7 @@ namespace WebTorrent.Domain.Services.User
             {
                 using (var transaction = session.BeginTransaction())
                 {
+
                     var userRecord = new UserRecord
                                      {
                                          Id = userDto.Id,
@@ -73,6 +77,24 @@ namespace WebTorrent.Domain.Services.User
                                          Role = userDto.Role,
                                          Password = userDto.Password
                                      };
+
+                    if (string.IsNullOrWhiteSpace(userRecord.Password))
+                    {
+                        var storedPassword = session
+                            .Query<UserRecord>()
+                            .Where(x => x.Id == userDto.Id)
+                            .Select(x => x.Password)
+                            .Single();
+
+                        userRecord.Password = storedPassword;
+                    }
+                    else
+                    {
+                        userRecord.Password = PasswordHasher.HashPassword(userRecord.Password);
+                    }
+
+                    var errors = userRecord.GetValidationErrors(x => x.Email, x => x.Name, x => x.Role);
+                    errors.ThrowIfHasErrors();
 
                     session.Update(userRecord);
                     transaction.Commit();
@@ -99,7 +121,7 @@ namespace WebTorrent.Domain.Services.User
 
                 return userDto;
             }
-        } 
+        }
 
         public List<UserDto> All()
         {

@@ -17,7 +17,7 @@ namespace WebTorrent.WebApp.Controllers.Common
 
         public static void SignIn(this ControllerBase controllerBase, string userName, bool isPersistent = false, params string[] roles)
         {
-            var authenticationManager = controllerBase.HttpContext.GetOwinContext().Authentication;
+            IAuthenticationManager authenticationManager = controllerBase.HttpContext.GetOwinContext().Authentication;
 
             authenticationManager.SignIn();
             authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);

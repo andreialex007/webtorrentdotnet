@@ -38,6 +38,7 @@ namespace WebTorrent.WebApp.Controllers
             return Json(new { Result = "ok" });
         }
 
+        [AllowAnonymous]
         public ActionResult LogOut()
         {
             this.SignOut();

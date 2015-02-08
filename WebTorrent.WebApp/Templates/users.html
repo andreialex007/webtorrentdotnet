@@ -1,8 +1,9 @@
 ﻿<div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner">
         <div class="page-logo">
-            <a href="index.html">
-                <img src="/Metronic/admin/layout/img/logo.png" alt="logo" class="logo-default" />
+            <a href="/">
+                <i class="fa fa-download online-torrent-logo"></i>
+                <span class="online-torrent-title">Online Torrent</span>
             </a>
             <div class="menu-toggler sidebar-toggler hide">
             </div>
@@ -28,7 +29,7 @@
                 <!-- END USER LOGIN DROPDOWN -->
                 <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                 <li class="dropdown dropdown-quick-sidebar-toggler">
-                    <a href="javascript:;" class="dropdown-toggle">
+                    <a href="/logout" class="dropdown-toggle">
                         <i class="fa fa-power-off"></i>
                     </a>
                 </li>
@@ -118,7 +119,7 @@
                                         Edit
                                     </span>
                                     &nbsp;
-                                    <span ng-click="user.delete()" class="label label-sm label-info">
+                                    <span ng-click="deleteUser(user)" class="label label-sm label-info">
                                         Delete
                                     </span>
                                 </td>
@@ -198,7 +199,7 @@
 
         <div class="page-footer">
             <div class="page-footer-inner">
-                2014 &copy; Metronic by keenthemes.
+               Online torrent
             </div>
             <div class="page-footer-tools">
                 <span class="go-top">

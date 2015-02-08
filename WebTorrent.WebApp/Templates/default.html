@@ -1,8 +1,9 @@
 ﻿<div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner">
         <div class="page-logo">
-            <a href="index.html">
-                <img src="/Metronic/admin/layout/img/logo.png" alt="logo" class="logo-default" />
+            <a  href="/">
+                <i class="fa fa-download online-torrent-logo"></i>
+                <span class="online-torrent-title" >Online Torrent</span>
             </a>
             <div class="menu-toggler sidebar-toggler hide">
             </div>
@@ -28,23 +29,14 @@
                 <button ng-click="deleteTorrent()" style="margin-top:5px" class="btn btn-link "><i class="fa fa-remove font-red-thunderbird"></i></button>
             </div>
 
-            <button style="margin-top:5px" type="submit" class="btn btn-circle blue-hoki"><i class="fa fa-cogs"></i> Settings</button>
+            <button style="margin-top:5px; cursor: default;" type="submit" class="btn btn-circle blue-hoki"><i class="fa fa-user"></i> {{userName}}</button>
             <ul class="nav navbar-nav pull-right">
 
-                <!-- BEGIN USER LOGIN DROPDOWN -->
-                <li class="dropdown dropdown-user">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle hide1" src="/Metronic/admin/layout/img/avatar3_small.jpg" />
-                        <span class="username username-hide-on-mobile">
-                            Administrator
-                        </span>
-                        <i class="fa fa-edit"></i>
-                    </a>
-                </li>
+
                 <!-- END USER LOGIN DROPDOWN -->
                 <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                 <li class="dropdown dropdown-quick-sidebar-toggler">
-                    <a href="javascript:;" class="dropdown-toggle">
+                    <a ng-click="logout()" href="javascript:;" class="dropdown-toggle">
                         <i class="fa fa-power-off"></i>
                     </a>
                 </li>
@@ -112,7 +104,7 @@
         </div>
         <div class="page-footer">
             <div class="page-footer-inner">
-                2014 &copy; Metronic by keenthemes.
+                Online torrent
             </div>
             <div class="page-footer-tools">
                 <span class="go-top">

@@ -120,6 +120,13 @@ namespace WebTorrent.Domain.Services.Torrent
             }
         }
 
+        public string GetZippedFile(int id)
+        {
+            var torrentDto = GetTorrentById(id);
+            var zippedFilePath = _torrentApi.PrepareToDownload(torrentDto);
+            return zippedFilePath;
+        }
+
         public void Start(int id)
         {
             ChangeState(id, dto => _torrentApi.Start(dto));

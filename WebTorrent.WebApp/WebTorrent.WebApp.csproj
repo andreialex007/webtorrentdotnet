@@ -43,6 +43,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
@@ -201,6 +204,7 @@
     <Compile Include="Controllers\Common\ControllerBase.cs" />
     <Compile Include="Controllers\Common\CustomAuthorizeAttribute.cs" />
     <Compile Include="Controllers\Common\ExceptionControllerActionInvoker.cs" />
+    <Compile Include="Controllers\DownloadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TorrentsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -5077,6 +5081,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
     <Folder Include="Content\" />
+    <Folder Include="Data\" />
     <Folder Include="fonts\" />
     <Folder Include="Metronic\global\plugins\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Models\" />

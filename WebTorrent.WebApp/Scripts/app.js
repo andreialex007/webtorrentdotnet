@@ -50,6 +50,6 @@
 
     angular.bootstrap(document, ['app']);
 
-    $(".login-button").click();
+//    $(".login-button").click();
 
 });

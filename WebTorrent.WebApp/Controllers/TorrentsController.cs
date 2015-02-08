@@ -22,7 +22,7 @@ namespace WebTorrent.WebApp.Controllers
         private const string CommandStart = "start";
         private const string CommandStop = "stop";
         private const string CommandPause = "pause";
-        private const int UpdatePause = 5000;
+        private const int UpdatePause = 2500;
 
         static TorrentsController()
         {
@@ -38,6 +38,8 @@ namespace WebTorrent.WebApp.Controllers
         [HttpGet]
         public void Command(int id, string command)
         {
+            
+
             if (command == CommandStart)
             {
                 TorrentEngine.Current.Start(id);

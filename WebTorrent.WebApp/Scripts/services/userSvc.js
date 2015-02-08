@@ -19,8 +19,10 @@
         }
 
         self.deleteUser = function (id, success) {
-            var userResource = $resource('/api/users/:id');
-            userResource.delete({ id: id }, success);
+            if (confirm("Вы действительно хотите удалить пользователя?")) {
+                var userResource = $resource('/api/users/:id');
+                userResource.delete({ id: id }, success);
+            }
         }
 
         self.saveUser = function (userData, success) {
@@ -33,13 +35,6 @@
             $.extend(user, userData);
             user.$save(success);
         }
-
-//        self.addUser = function (userData, success) {
-//            var User = $resource('/api/users/add');
-//            var user = new User();
-//            $.extend(user, userData);
-//            user.save(success);
-//        }
         return self;
     }
 

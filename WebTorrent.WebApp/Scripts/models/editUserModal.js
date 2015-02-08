@@ -27,6 +27,12 @@
 
         self.visible = false;
         self.hide = function () {
+            self.userId = 0;
+            self.userName = "";
+            self.email = "";
+            self.name = "";
+            self.password = "";
+            self.errorsString = "";
             self.visible = false;
         }
 
@@ -57,7 +63,6 @@
             if (self.userId == 0 && !self.password) {
                 self.errorsString += "\r\n" + "Необходимо указать пароль";
             }
-
         }
 
         function validateEmail(email) {

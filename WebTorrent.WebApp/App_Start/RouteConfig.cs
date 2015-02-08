@@ -13,6 +13,8 @@ namespace WebTorrent.WebApp
 
             routes.MapRoute(null, "login", new { controller = "Account", action = "Index", id = UrlParameter.Optional });
             routes.MapRoute(null, "account/login", new { controller = "Account", action = "Login", id = UrlParameter.Optional });
+            routes.MapRoute(null, "account/UserId", new { controller = "Account", action = "UserId", id = UrlParameter.Optional });
+            routes.MapRoute(null, "download/{id}", new { controller = "Download", action = "Get", id = UrlParameter.Optional });
             routes.MapRoute(null, "logout", new { controller = "Account", action = "LogOut", id = UrlParameter.Optional });
            
 

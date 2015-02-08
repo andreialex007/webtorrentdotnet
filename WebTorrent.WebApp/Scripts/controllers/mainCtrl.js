@@ -27,7 +27,7 @@
             console.log("update torrent info");
         }
 
-       
+
 
         $scope.fileChanged = function (event) {
 
@@ -64,6 +64,10 @@
             var selectedTorrent = $.grep($scope.torrents, function (x) { return x.selected == true; })[0];
             torrentSvc.stopTorrent(selectedTorrent.Id, function () {
             });
+        }
+
+        $scope.logout = function () {
+            window.location.href = "/logout";
         }
 
         //#region active menu item
@@ -109,7 +113,6 @@
             try {
                 $scope.torrents[selectedIndex].selected = true;
             } catch (e) {
-                debugger;
             }
         };
 

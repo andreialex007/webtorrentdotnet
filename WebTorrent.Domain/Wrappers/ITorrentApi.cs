@@ -22,5 +22,6 @@ namespace WebTorrent.Domain.Wrappers
         void Delete(TorrentDto torrentDto);
         string GetName(TorrentDto torrentDto);
         event Action<TorrentDto> TorrentDownloadingCompleted;
+        string PrepareToDownload(TorrentDto torrentDto);
     }
 }

@@ -3,12 +3,15 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.SessionState;
+using WebTorrent.TorrentLib;
 using WebTorrent.WebApp.Code;
+using WebTorrent.WebApp.Code.Extensions;
 
 namespace WebTorrent.WebApp
 {
@@ -19,22 +22,12 @@ namespace WebTorrent.WebApp
 
         protected void Application_Start()
         {
-            //            new MultipartFormFormatter().SupportedMediaTypes
-
-
-
-
             var mediaTypeFormatter = GlobalConfiguration.Configuration.Formatters.Single(x => x.GetType() == typeof(FormUrlEncodedMediaTypeFormatter));
             mediaTypeFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue(StringMultipartMediaType));
             mediaTypeFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue(StringApplicationMediaType));
 
+            TorrentApi.UserFolderPath = HostingEnvironment.MapPath("~/Data/");
 
-
-            //            ModelBinders
-
-            //            ModelBinders.Binders.DefaultBinder = new CustomModelBinder();
-
-            //            GlobalConfiguration.Configuration.Formatters.Add(new MultipartFormFormatter());
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

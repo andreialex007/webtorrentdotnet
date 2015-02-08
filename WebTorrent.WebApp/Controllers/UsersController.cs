@@ -8,6 +8,7 @@ using WebTorrent.WebApp.Controllers.Common;
 namespace WebTorrent.WebApp.Controllers
 {
     [RoutePrefix("api/users")]
+    [CustomAuthorize(Roles = "Administrator")]
     public class UsersController : ApiControllerBase
     {
         private readonly IUserService _userService;
@@ -31,16 +32,9 @@ namespace WebTorrent.WebApp.Controllers
             return _userService.GetUserById(id);
         }
 
-        [Route(@"add")]
-        [HttpPost]
-        public void Add(UserDto userDto)
-        {
-
-        }
-
         [Route(@"update")]
         [HttpPost]
-        public UserDto Update(UserDto userDto)
+        public void Update(UserDto userDto)
         {
             if (userDto.Id == 0)
             {
@@ -50,7 +44,6 @@ namespace WebTorrent.WebApp.Controllers
             {
                 _userService.Update(userDto);
             }
-            return userDto;
         }
 
         [Route(@"{id:int}")]

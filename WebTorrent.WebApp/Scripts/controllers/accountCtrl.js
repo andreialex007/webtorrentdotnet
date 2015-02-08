@@ -33,11 +33,17 @@
                 dataType: "json",
                 contentType: "application/json"
             }).done(function (data) {
-                $scope.passwordErrors = $.grep(data.Errors, function (x) { return x.PropertyName == "Password"; });
-                $scope.userNameErrors = $.grep(data.Errors, function (x) { return x.PropertyName == "Name"; });
-                if (data.ValidationSummary) {
-                    $scope.commonErrors = [data.ValidationSummary];
+                if (data.Errors || data.ValidationSummary) {
+                    $scope.passwordErrors = $.grep(data.Errors, function(x) { return x.PropertyName == "Password"; });
+                    $scope.userNameErrors = $.grep(data.Errors, function(x) { return x.PropertyName == "Name"; });
+
+                    if (data.ValidationSummary) {
+                        $scope.commonErrors = [data.ValidationSummary];
+                    }
+                } else {
+                    window.location.href = "/";
                 }
+                
             });
 
         };

@@ -14,36 +14,24 @@
         //Наследуемся от базового
         baseCtrl.call(this, $scope, $routeParams);
 
-        userSvc.getUsers(function (data) {
-            debugger;
-            $scope.users = data;
-        });
+        function updateUsers() {
+            userSvc.getUsers(function (data) {
+                $scope.users = data;
+            });
+        }
 
-        //        $scope.users = [
-        //            new userItem({
-        //                id: "1",
-        //                name: "name",
-        //                email: "email",
-        //                role: "role"
-        //            }),
-        //            new userItem({
-        //                id: "1",
-        //                name: "name",
-        //                email: "email",
-        //                role: "role"
-        //            }),
-        //            new userItem({
-        //                id: "1",
-        //                name: "name",
-        //                email: "email",
-        //                role: "role"
-        //            })
-        //        ];
+        function cleanUpModal() {
+            $scope.editUserModal.userId = 0;
+            $scope.editUserModal.userName = "";
+            $scope.editUserModal.email = "";
+            $scope.editUserModal.name = "";
+            $scope.editUserModal.password = "";
+        }
+
+        updateUsers();
 
         $scope.editUserModal = new editUserModal();
         $scope.editUserModal.onSaved = function () {
-
-            debugger;
 
             userSvc.saveUser({
                 Id: $scope.editUserModal.userId,
@@ -54,22 +42,10 @@
             },
             function (data) {
 
-                $scope.users.push(new userItem({
-                    Id: $scope.editUserModal.userId,
-                    Name: $scope.editUserModal.userName,
-                    Email: $scope.editUserModal.email,
-                    Role: $scope.editUserModal.selectedRole.name
-                }));
+                updateUsers();
+                cleanUpModal();
 
-                $scope.editUserModal.userId = 0;
-                $scope.editUserModal.userName = "";
-                $scope.editUserModal.email = "";
-                $scope.editUserModal.name = "";
-                $scope.editUserModal.password = "";
             });
-
-
-
         }
         $scope.addUser = function () {
             $scope.editUserModal.show();
@@ -77,9 +53,21 @@
         }
 
         $scope.editUser = function (user) {
-            debugger;
+
+            $scope.editUserModal.userId = user.Id;
+            $scope.editUserModal.userName = user.Name;
+            $scope.editUserModal.email = user.Email;
+            $scope.editUserModal.selectedRole = $.grep($scope.editUserModal.avaliableRoles, function (x) { return x.name == user.Role; })[0];
+            $scope.editUserModal.show();
+
         }
 
+        $scope.deleteUser = function (user) {
+            userSvc.deleteUser(user.Id, function () {
+                updateUsers();
+                cleanUpModal();
+            });
+        }
 
         console.log("users controller");
     };

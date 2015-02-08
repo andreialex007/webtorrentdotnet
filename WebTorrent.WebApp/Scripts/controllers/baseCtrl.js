@@ -12,6 +12,8 @@
            { name: "Paused", url: "/paused", icon: "fa-pause" }
         ];
 
+        $scope.userName = "Ivanov";
+
         console.log("base controller");
     };
 });

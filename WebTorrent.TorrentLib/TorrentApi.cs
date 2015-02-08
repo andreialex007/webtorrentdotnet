@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Ionic.Zip;
 using MonoTorrent.Client;
 using MonoTorrent.Common;
 using WebTorrent.Domain.Services.Torrent;
@@ -23,7 +24,14 @@ namespace WebTorrent.TorrentLib
     public class TorrentApi : ITorrentApi
     {
         private readonly ClientEngine _clientEngine;
-        private readonly string _savePath = Path.GetTempPath();
+
+        public static string UserFolderPath { get; set; }
+
+        public static string SavePath
+        {
+            get { return Path.GetTempPath(); }
+        }
+
         private readonly Dictionary<int, TorrentManager> _idToManagersMapping = new Dictionary<int, TorrentManager>();
         public event Action<TorrentDto> TorrentDownloadingCompleted;
 
@@ -37,14 +45,33 @@ namespace WebTorrent.TorrentLib
 
         public TorrentApi()
         {
-            var settings = new EngineSettings { SavePath = _savePath };
+            var settings = new EngineSettings { SavePath = SavePath };
             _clientEngine = new ClientEngine(settings);
+        }
+
+        public string PrepareToDownload(TorrentDto torrentDto)
+        {
+            if (!_idToManagersMapping.ContainsKey(torrentDto.Id))
+                return string.Empty;
+
+            var manager = _idToManagersMapping[torrentDto.Id];
+            var fileName = string.Format("{0}.zip", Path.Combine(UserFolderPath, manager.Torrent.InfoHash.ToString()));
+            if (File.Exists(fileName))
+                return fileName;
+
+            using (var zip = new ZipFile())
+            {
+                zip.AddDirectory(manager.Torrent.SavePath());
+                zip.Save(fileName);
+            }
+
+            return fileName;
         }
 
         public void AddTorrent(TorrentDto torrentDto)
         {
             var torrent = Torrent.Load(torrentDto.Data);
-            var manager = new TorrentManager(torrent, _savePath, new TorrentSettings());
+            var manager = new TorrentManager(torrent, torrent.SavePath(), new TorrentSettings());
             _idToManagersMapping.Add(torrentDto.Id, manager);
             _clientEngine.Register(manager);
             LoadTorrentInfo(torrentDto, false);

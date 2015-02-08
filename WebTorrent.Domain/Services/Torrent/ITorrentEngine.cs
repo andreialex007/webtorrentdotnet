@@ -13,5 +13,6 @@ namespace WebTorrent.Domain.Services.Torrent
         void Start(int id);
         void Stop(int id);
         void Pause(int id);
+        string GetZippedFile(int id);
     }
 }
